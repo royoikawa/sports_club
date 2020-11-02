@@ -18,17 +18,23 @@ function Index() {
 
         <View style={styles.container}>
             <View style={styles.indexTop}>
-                <View style={{flex:1,flexDirection: 'row',justifyContent: 'center',alignItems:'center',}}>
-                    <Text style={{ fontWeight: 'bold', color: '#0072E3',fontSize:14}}>編輯個人檔案</Text>
-                    <Entypo name="pencil" style={styles.topIcon} />
+                <View style={{flex:1}}>
                 </View>
-                <View style={{flex:1,flexDirection: 'row',justifyContent: 'flex-end',alignItems:'center'}}>
+                <View style={{flex:14,flexDirection: 'row',justifyContent: 'flex-start',alignItems:'center',}}>
+                    <Text style={{marginRight:4,fontWeight: 'bold', color: '#0072E3',fontSize:14}}>編輯個人檔案</Text>
+                    <Foundation name="clipboard-pencil" style={styles.topIcon} />
+                </View>
+                <View style={{flex:1,flexDirection: 'row',justifyContent: 'center',alignItems:'center'}}>
                     <Entypo name="log-out" style={styles.topIcon} />
+                </View>
+                <View style={{flex:1,flexDirection: 'row',justifyContent: 'center',alignItems:'center'}}>
                     <AntDesign name="notification" style={styles.topIcon} />
                 </View>
+                <View style={{flex:1}}>
+                </View>
             </View>
-            <View style={styles.row}>
-                <Text>Row-2</Text>
+            <View style={styles.index}>
+                <Text></Text>
             </View>
         </View>
     )
@@ -43,12 +49,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor:'white'
     },
-    row: {
+    index: {
         flex: 17,
-        flexDirection: 'row'
+        flexDirection: 'column',
+        backgroundColor:'#66B3FF'
     },
     topIcon:{
-        fontSize:16,
+        fontSize:20,
         color:'gray'
 
     },
