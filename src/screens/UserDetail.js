@@ -43,14 +43,29 @@ const { width, height } = Dimensions.get('screen');
 import { Card } from 'react-native-paper';
 
 export default class  UserDetail extends React.Component {
- 
-  render(){
-       const [selectedValue, setSelectedValue] = useState('java');
 
+ constructor(props) {
+    super(props);
+    this.state = {
+     TypeOfSport: '排球',
+    };
+
+  }
+  
+
+   funselectfilter(){
+    //const [selectedValue, setSelectedValue] = useState('java');
+    //const [selectedIndex, setSelectedIndex] = useState('1');
+   
+  }
+  render(){
+      
   return (
+    
     <View style={styles.container}>
       <View style={styles.userdatatop}>
-        <Text style={{ color: '#ffffff' }}>用戶名</Text>
+        <Text style={{ color: '#ffffff',alignItems:"baseline" }}>用戶名</Text>
+        <Text style={{ paddingLeft:width * 0.33 }}></Text>
         <TouchableOpacity>
           <AntDesign
             name="closesquare"
@@ -61,12 +76,7 @@ export default class  UserDetail extends React.Component {
           />
           
         </TouchableOpacity>
-         <Button
-          title="Switch Test to UD" 
-          onPress={() =>
-            this.props.navigation.navigate('UserDetail')
-          }
-        />
+         
       </View>
 
       
@@ -150,6 +160,7 @@ export default class  UserDetail extends React.Component {
           </View>
 
           <View>
+            
             <View style={{ flexDirection: 'row', marginTop: 25 }}>
               <Text
                 style={{ color: '#000000', fontWeight: 'bold', fontSize: 18 }}>
@@ -158,11 +169,12 @@ export default class  UserDetail extends React.Component {
                   
                   
               <Picker
-                selectedValue={selectedValue}
+                selectedValue={this.state.TypeOfSport}
                 style={{ height: 25, width: 100 }}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedValue(itemValue)
-                }>
+                onValueChange={(ball) => {
+                  this.setState({TypeOfSport : ball})
+                 
+                }}>
                 <Picker.Item label="排球" value="java" />
                 <Picker.Item label="其他" value="js" />
               </Picker>
@@ -255,15 +267,13 @@ const styles = StyleSheet.create({
     height: height * 0.045,
     marginLeft: 10,
     alignItems: 'center',
-    paddingLeft: 127,
+    paddingLeft: width * 0.4,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderTopWidth: 1,
     borderRightWidth: 1,
   },
-  iconclose: {
-    paddingLeft: 127,
-  },
+  
   userdatabottom: {
     flexDirection: 'row',
     width: width * 0.9,
