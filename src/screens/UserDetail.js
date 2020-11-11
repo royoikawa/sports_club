@@ -64,9 +64,10 @@ export default class  UserDetail extends React.Component {
     
     <View style={styles.container}>
       <View style={styles.userdatatop}>
-        <Text style={{ color: '#ffffff',alignItems:"baseline" }}>用戶名</Text>
-        <Text style={{ paddingLeft:width * 0.33 }}></Text>
+        <Text style={{ color: '#ffffff',alignItems:"baseline" ,fontSize : 18}}>用戶名</Text>
+        <Text style={{ paddingLeft:width * 0.355 }}></Text>
         <TouchableOpacity>
+        
           <AntDesign
             name="closesquare"
             size={26}
@@ -81,14 +82,25 @@ export default class  UserDetail extends React.Component {
 
       
       <View style={styles.userdatabottom}>
-        <Ionicons
-          name="md-person"
-          size={55}
-          color="black"
-          style={styles.person}
-        />
         <View>
-          <View style={styles.bottominfor}>
+          
+        </View>
+        
+        <View>
+
+
+          <View style={{flexDirection : "row"}}>
+
+            <View>
+                <Ionicons
+            name="md-person"
+            size={55}
+            color="black"
+            style={styles.person}
+            />
+            </View>
+            <View>
+              <View style={styles.bottominfor}>
             <Text
               style={{ color: '#000000', fontWeight: 'bold', fontSize: 18 }}>
               最擅長球類:
@@ -97,7 +109,7 @@ export default class  UserDetail extends React.Component {
               style={{
                 color: '#930000',
                 fontWeight: 'bold',
-                paddingLeft: 20,
+                paddingLeft: width *0.04,
                 fontSize: 18,
               }}>
               排球
@@ -113,48 +125,61 @@ export default class  UserDetail extends React.Component {
               style={{
                 color: '#000000',
                 fontWeight: 'bold',
-                paddingLeft: 80,
+                paddingLeft: width *0.2,
                 fontSize: 18,
               }}>
               88
             </Text>
           </View>
+        </View>   
+         
+
+
+            </View>
+              
+
+
+
+         
+
+
+
 
           <View>
             <View style={{ flexDirection: 'row', marginTop: 20 }}>
               <Text
-                style={{ color: '#000000', fontWeight: 'bold', fontSize: 18 }}>
+                style={{ color: '#000000', fontWeight: 'bold', fontSize: 18 ,paddingLeft : width *0.15}}>
                 球品評價:
               </Text>
               <AntDesign
                 name="star"
                 size={24}
                 color="#F9F900"
-                style={{ paddingLeft: 15 }}
+                style={{ paddingLeft: width *0.035 }}
               />
               <AntDesign
                 name="star"
                 size={24}
                 color="#F9F900"
-                style={{ paddingLeft: 2 }}
+                style={{ paddingLeft: width *0.008 }}
               />
               <AntDesign
                 name="star"
                 size={24}
                 color="#F9F900"
-                style={{ paddingLeft: 2 }}
+                style={{ paddingLeft: width *0.008 }}
               />
               <AntDesign
                 name="star"
                 size={24}
                 color="#F9F900"
-                style={{ paddingLeft: 2 }}
+                style={{ paddingLeft: width *0.008 }}
               />
               <AntDesign
                 name="star"
                 size={24}
                 color="gray"
-                style={{ paddingLeft: 2 }}
+                style={{ paddingLeft: width *0.008 }}
               />
             </View>
           </View>
@@ -163,14 +188,14 @@ export default class  UserDetail extends React.Component {
             
             <View style={{ flexDirection: 'row', marginTop: 25 }}>
               <Text
-                style={{ color: '#000000', fontWeight: 'bold', fontSize: 18 }}>
+                style={{ color: '#000000', fontWeight: 'bold', fontSize: 18,paddingLeft : width *0.15 }}>
                 各項球類詳細數據
               </Text>
                   
                   
               <Picker
                 selectedValue={this.state.TypeOfSport}
-                style={{ height: 25, width: 100 }}
+                style={{ height: 25, width: width *0.24, marginLeft: width * 0.05 }}
                 onValueChange={(ball) => {
                   this.setState({TypeOfSport : ball})
                  
@@ -183,9 +208,9 @@ export default class  UserDetail extends React.Component {
           </View>
 
           <View>
-            <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <View style={{ flexDirection: 'row', marginTop: height *0.03 }}>
               <Card style={styles.cardsty}>
-                <Text style={{ color: '#000000', fontSize: 14 }}>
+                <Text style={{ color: '#000000', fontSize: 16 ,}}>
                   綜合程度:88
                 </Text>
               </Card>
@@ -194,7 +219,7 @@ export default class  UserDetail extends React.Component {
          
         </View>
       </View>
-       <View style={{width: width * 0.90 ,marginLeft:10, borderBottomLeftRadius: 2,
+       <View style={{width: width * 0.940 ,marginLeft:width * 0.015, borderBottomLeftRadius: 2,
     borderBottomRightRadius: 2,borderBottomWidth :1,borderLeftWidth:1,borderRightWidth:1}}>
             <LineChart
               data={{
@@ -202,8 +227,8 @@ export default class  UserDetail extends React.Component {
                   '接發',
                   '扣球',
                   '舉球',
-                  '發球',
-                  '修正舉球',
+                  '發球\t\t',
+                  '修正舉球\t\t\t',
                   '修正攻擊',
                   '接扣',
                 ],
@@ -221,15 +246,15 @@ export default class  UserDetail extends React.Component {
                   },
                 ],
               }}
-              width={Dimensions.get('window').width * 0.895} // from react-native
-              height={200}
+              width={Dimensions.get('window').width * 0.934} // from react-native
+              height={205}
               yAxisSuffix=""
               yAxisInterval={1} // optional, defaults to 1
               chartConfig={{
                 backgroundColor: '#84C1FF',
                 backgroundGradientFrom: '#84C1FF',
                 backgroundGradientTo: '#84C1FF',
-                decimalPlaces: 3, // optional, defaults to 2dp
+                decimalPlaces: 2, // optional, defaults to 2dp
                 color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                 labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                 style: {
@@ -257,17 +282,17 @@ export default class  UserDetail extends React.Component {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight * 2.2,
+    paddingTop: Constants.statusBarHeight * 1,
     padding: 8,
   },
   userdatatop: {
     flexDirection: 'row',
     backgroundColor: '#6A6AFF',
-    width: width * 0.9,
+    width: width * 0.94,
     height: height * 0.045,
-    marginLeft: 10,
+    marginLeft: width *0.015,
     alignItems: 'center',
-    paddingLeft: width * 0.4,
+    paddingLeft: width * 0.38,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderTopWidth: 1,
@@ -276,29 +301,34 @@ const styles = StyleSheet.create({
   
   userdatabottom: {
     flexDirection: 'row',
-    width: width * 0.9,
+    width: width * 0.94,
     height: height * 0.40,
     backgroundColor: '#84C1FF',
-    marginLeft: 10,
+    marginLeft: width *0.015,
     borderLeftWidth: 1,
     borderRightWidth: 1,
    
   },
-  person: {},
+  person: {
+    marginTop : height *0.06,
+     paddingLeft : width *0.15,
+  },
   bottominfor: {
     flexDirection: 'row',
-    marginTop: 35,
-    marginLeft: 95,
+    marginTop: height *0.045,
+    marginLeft: width *0.1,
   },
   bottomscore: {
     flexDirection: 'row',
-    marginTop: 15,
-    marginLeft: 95,
+    marginTop: height *0.025,
+    marginLeft: width *0.1,
   },
   cardsty: {
     borderRadius: 8,
+    borderWidth:1,
     width: width * 0.33,
     height: height * 0.05,
+    marginLeft : width * 0.15,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 6,
