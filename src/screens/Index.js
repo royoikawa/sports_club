@@ -1,9 +1,19 @@
 import React,{Component,useState} from 'react';
 import { version } from 'react';
-import {Alert, Button, View, StyleSheet,Text,TouchableOpacity} from 'react-native';
+import Modal from 'modal-react-native-web';
+import {Alert, Button,Overlay, View, StyleSheet,Text,TouchableOpacity} from 'react-native';
 
 export default class Index extends React.Component{
     render(){
+
+    const OverlayExample = () => {
+      const [visible, setVisible] = useState(false);
+
+      const toggleOverlay = () => {
+        setVisible(!visible);
+    };
+  }
+
     return(
         <View>
           <View>
@@ -19,7 +29,8 @@ export default class Index extends React.Component{
 
            
           <View>
-           
+            
+        
           
 
           </View>
@@ -32,6 +43,7 @@ export default class Index extends React.Component{
     )
         } 
 }
+
 
 const styles = StyleSheet.create({
 

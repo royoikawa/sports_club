@@ -125,7 +125,7 @@ export default class  UserDetail extends React.Component {
               style={{
                 color: '#000000',
                 fontWeight: 'bold',
-                paddingLeft: width *0.2,
+                paddingLeft: width *0.1,
                 fontSize: 18,
               }}>
               88
