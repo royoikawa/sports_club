@@ -3,7 +3,7 @@ import { version } from 'react';
 import Modal from 'modal-react-native-web';
 import {Alert, Button,Overlay, View, StyleSheet,Text,TouchableOpacity} from 'react-native';
 
-export default class Index extends React.Component{
+export default class Index1 extends React.Component{
     render(){
 
     const OverlayExample = () => {

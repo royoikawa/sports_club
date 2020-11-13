@@ -6,7 +6,9 @@ export default class Index extends React.Component{
 
     constructor(props) {
     super(props);
-    
+    this.state = {
+     TypeOfSport: '排球',
+    };
     const [visible, setVisible] = useState(false);
     
     
