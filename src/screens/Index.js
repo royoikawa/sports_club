@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Alert, Button, View, Text, StyleSheet } from 'react-native';
+import { Alert, Button, View, Text, StyleSheet,Image } from 'react-native';
+import logo from './assets/logo.PNG'; 
 import {
     AntDesign,
     Ionicons,
@@ -34,7 +35,15 @@ function Index() {
                 </View>
             </View>
             <View style={styles.index}>
-                <Text></Text>
+                <View style={styles.indexLogo}>
+                    <Image source={'./assets/logo.PNG'} />
+                </View>
+                <View style={styles.indexLogo}>
+                    
+                </View>
+                <View style={styles.indexLogo}>
+                    
+                </View>
             </View>
         </View>
     )
@@ -57,7 +66,10 @@ const styles = StyleSheet.create({
     topIcon:{
         fontSize:20,
         color:'gray'
-
     },
+    indexLogo:{
+        flex:1,
+        flexDirection:'row'
+    }
 })
 export default Index
