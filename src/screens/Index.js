@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Alert, Button, View, Text, StyleSheet,Image } from 'react-native';
-import logo from './assets/logo.PNG'; 
 import {
     AntDesign,
     Ionicons,
@@ -36,7 +35,11 @@ function Index() {
             </View>
             <View style={styles.index}>
                 <View style={styles.indexLogo}>
-                    <Image source={'./assets/logo.PNG'} />
+                    <Image
+                    height='80%'
+                    width='80%' 
+                    source={require('../../Image/logo.png')} 
+                    />
                 </View>
                 <View style={styles.indexLogo}>
                     
