@@ -47,7 +47,10 @@ function Index() {
                     <View style={{flex:1}}></View>
                 </View>
                 <View style={styles.indexButton}>
-
+                    <View style={{flex:1,flexDirection:'row'}}>
+                        
+                    </View>
+                    <View style={{flex:1,flexDirection:'row'}}></View>
                 </View>
             </View>
         </View>
@@ -82,7 +85,7 @@ const styles = StyleSheet.create({
     },
     indexButton:{
         flex:3,
-        flexDirection:'row'
+        flexDirection:'column'
     }
 
 })
