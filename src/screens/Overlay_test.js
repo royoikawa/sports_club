@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions,Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import { Overlay } from 'react-native-elements';
 import { WebView } from 'react-native-webview';
+import UserDetail from './UserDetail';
 
-const Modal = ({
+const {width,height} = Dimensions.get("window");
+
+global.Modal = ({
   visible,
   showCrossBtn,
   setModalVisible,
@@ -15,14 +18,18 @@ const Modal = ({
     <Overlay
       isVisible={visible}
       fullScreen={false}
-      overlayBackgroundColor={backgroundColor}
+      overlayBackgroundColor={"#ff136f"}
       overlayStyle={styles.overlay}
-      onBackdropPress={() => setModalVisible(false)}>
+      onBackdropPress={() =>setModalVisible(false)}
+    
+      >
+      
       {children}
     </Overlay>
   );
 };
 
+ 
 export default class Overlay_test extends React.Component {
   state = {
     isVisible: false,
@@ -34,7 +41,14 @@ export default class Overlay_test extends React.Component {
     });
   };
 
+
+  
+  
+
   render() {
+
+    
+
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.setState({ isVisible: true })}>
@@ -43,11 +57,16 @@ export default class Overlay_test extends React.Component {
         <Modal
           visible={this.state.isVisible}
           setModalVisible={this.setModalVisible}
-          showCrossBtn ={false}>
-           <WebView
-            style={[styles.webView]}
-            source={{ uri: 'https://www.google.com/' }}
-          />
+          showCrossBtn ={false}
+          
+
+          >
+          
+         <UserDetail/>
+          
+       
+
+           
          
         </Modal>
       </View>
@@ -61,7 +80,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   overlay:{
-    width : width * 0.9,
+    width : width * 0.95,
     height :height * 0.85,
+    
   },
 });

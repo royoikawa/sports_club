@@ -11,6 +11,8 @@ import {
 
 import Constants from 'expo-constants';
 
+import { useNavigation } from '@react-navigation/native';
+
 import {
   LineChart,
   BarChart,
@@ -35,12 +37,19 @@ import {
   SimpleLineIcons,
 } from '@expo/vector-icons';
 
-const { width, height } = Dimensions.get('screen');
+const { width, height } = Dimensions.get('window');
+
+import { Overlay } from 'react-native-elements';
 
 // You can import from local files
 
 // or any pure javascript modules available in npm
 import { Card } from 'react-native-paper';
+import { TouchableHighlight } from 'react-native-gesture-handler';
+
+import Overlay_test from  '../screens/Overlay_test';
+
+import Modal from  './Overlay_test'
 
 export default class  UserDetail extends React.Component {
 
@@ -48,9 +57,17 @@ export default class  UserDetail extends React.Component {
     super(props);
     this.state = {
      TypeOfSport: '排球',
+     isVisible: true,
     };
 
+    
+
+  
+
   }
+
+
+  
   
 
    funselectfilter(){
@@ -58,25 +75,36 @@ export default class  UserDetail extends React.Component {
     //const [selectedIndex, setSelectedIndex] = useState('1');
    
   }
-  render(){
-      
+  
+  render = () => {
+   
   return (
     
     <View style={styles.container}>
-      <View style={styles.userdatatop}>
+      <View style={styles.userdatatop} navigation={this.props.navigation}>
         <Text style={{ color: '#ffffff',alignItems:"baseline" ,fontSize : 18}}>用戶名</Text>
-        <Text style={{ paddingLeft:width * 0.355 }}></Text>
-        <TouchableOpacity>
-        
+        <Text style={{ paddingLeft:width * 0.35 }}></Text>
+       
+        <TouchableHighlight>
+
           <AntDesign
             name="closesquare"
             size={26}
             color="white"
             style={styles.iconclose}
+            onPress={() => global.Modal.visible = false}
             
           />
+        
+        </TouchableHighlight>
+        
+              
+
+        
+
+         
           
-        </TouchableOpacity>
+       
          
       </View>
 
@@ -125,7 +153,7 @@ export default class  UserDetail extends React.Component {
               style={{
                 color: '#000000',
                 fontWeight: 'bold',
-                paddingLeft: width *0.1,
+                paddingLeft : width * 0.2,
                 fontSize: 18,
               }}>
               88
@@ -219,7 +247,7 @@ export default class  UserDetail extends React.Component {
          
         </View>
       </View>
-       <View style={{width: width * 0.940 ,marginLeft:width * 0.015, borderBottomLeftRadius: 2,
+       <View style={{width: width * 0.9 , borderBottomLeftRadius: 2,
     borderBottomRightRadius: 2,borderBottomWidth :1,borderLeftWidth:1,borderRightWidth:1}}>
             <LineChart
               data={{
@@ -246,7 +274,7 @@ export default class  UserDetail extends React.Component {
                   },
                 ],
               }}
-              width={Dimensions.get('window').width * 0.934} // from react-native
+              width={Dimensions.get('window').width * 0.895} // from react-native
               height={205}
               yAxisSuffix=""
               yAxisInterval={1} // optional, defaults to 1
@@ -281,18 +309,17 @@ export default class  UserDetail extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+   
     paddingTop: Constants.statusBarHeight * 1,
-    padding: 8,
   },
   userdatatop: {
     flexDirection: 'row',
     backgroundColor: '#6A6AFF',
-    width: width * 0.94,
+    width: width * 0.9,
     height: height * 0.045,
-    marginLeft: width *0.015,
+    
     alignItems: 'center',
-    paddingLeft: width * 0.38,
+    paddingLeft: width * 0.35,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderTopWidth: 1,
@@ -301,17 +328,17 @@ const styles = StyleSheet.create({
   
   userdatabottom: {
     flexDirection: 'row',
-    width: width * 0.94,
+    width: width * 0.9,
     height: height * 0.40,
     backgroundColor: '#84C1FF',
-    marginLeft: width *0.015,
+    
     borderLeftWidth: 1,
     borderRightWidth: 1,
    
   },
   person: {
     marginTop : height *0.06,
-     paddingLeft : width *0.15,
+    paddingLeft : width *0.15,
   },
   bottominfor: {
     flexDirection: 'row',
