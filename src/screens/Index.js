@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, View, Text, StyleSheet, Image, Card } from 'react-native';
+import { Alert, Button, View, Text, StyleSheet, Image,TouchableHighlight } from 'react-native';
 import {
     AntDesign,
     Ionicons,
@@ -36,21 +36,26 @@ function Index() {
             <View style={styles.index}>
                 <View style={styles.indexLogo}>
                     <Image
-                        height='100%'
-                        width='100%'
+                        style={styles.tinyLogo}
                         source={require('../../Image/logo.png')}
                     />
                 </View>
                 <View style={styles.indexCard}>
-                    <View style={{flex:1}}></View>
-                    <View style={{flex:15,backgroundColor:'white',borderRadius: 10,}}></View>
-                    <View style={{flex:1}}></View>
+                    <View style={{ flex: 1 }}></View>
+                    <View style={{ flex: 15, backgroundColor: 'white', borderRadius: 10, }}>
+                        <View style={{width:'25%',borderWidth:2,borderRadius:70}}>
+                            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                                <AntDesign  name="user" size={80} color="black" onPress={()=>alert('www')}/>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={{ flex: 1 }}></View>
                 </View>
                 <View style={styles.indexButton}>
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+
                     </View>
-                    <View style={{flex:1,flexDirection:'row'}}></View>
+                    <View style={{ flex: 1, flexDirection: 'row' }}></View>
                 </View>
             </View>
         </View>
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
     index: {
         flex: 17,
         flexDirection: 'column',
-        backgroundColor: '#66B3FF'
+        backgroundColor: '#87CEFA'
     },
     topIcon: {
         fontSize: 20,
@@ -83,10 +88,15 @@ const styles = StyleSheet.create({
         flex: 1.5,
         flexDirection: 'row',
     },
-    indexButton:{
-        flex:3,
-        flexDirection:'column'
-    }
+    indexButton: {
+        flex: 3,
+        flexDirection: 'column'
+    },
+    tinyLogo: {
+        width: '45%',
+        height: '100%',
+    },
+
 
 })
 export default Index
