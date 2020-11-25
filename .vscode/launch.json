@@ -17,7 +17,7 @@
             "type": "reactnative",
             "request": "launch",
             "platform": "android",
-            "enableDebug": false
+            "enableDebug": true
         },
         {
             "name": "Debug iOS",
