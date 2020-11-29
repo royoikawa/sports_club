@@ -2,6 +2,7 @@ import React,{Component,useState} from 'react';
 import { version } from 'react';
 import Modal from 'modal-react-native-web';
 import {Alert, Button,Overlay, View, StyleSheet,Text,TouchableOpacity} from 'react-native';
+import Overlay_test from './Overlay_test';
 
 export default class Index1 extends React.Component{
     render(){
@@ -18,10 +19,17 @@ export default class Index1 extends React.Component{
         <View>
           <View>
                 <Text>good</Text>
-                <Button
+            <Button
               title="Switch Test to UD" 
               onPress={() =>
-                this.props.navigation.navigate('UserDetail')
+                this.props.navigation.navigate('Overlay_test')
+              }
+            />
+
+            <Button
+              title="Switch Test to Locate" 
+              onPress={() =>
+                this.props.navigation.navigate('Location_List')
               }
             />
 

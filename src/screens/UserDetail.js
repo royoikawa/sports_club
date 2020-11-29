@@ -37,6 +37,7 @@ import {
   SimpleLineIcons,
 } from '@expo/vector-icons';
 
+// set window width,height
 const { width, height } = Dimensions.get('window');
 
 import { Overlay } from 'react-native-elements';
@@ -52,7 +53,7 @@ import Overlay_test from  '../screens/Overlay_test';
 import Modal from  './Overlay_test'
 
 export default class  UserDetail extends React.Component {
-
+ // set initial state in constructor
  constructor(props) {
     super(props);
     this.state = {
@@ -71,11 +72,16 @@ export default class  UserDetail extends React.Component {
   
 
    funselectfilter(){
-    //const [selectedValue, setSelectedValue] = useState('java');
-    //const [selectedIndex, setSelectedIndex] = useState('1');
+   
    
   }
   
+  /*
+  At line 224,Specify state status to value, use the click Picker.Item to change the value 
+      index, and pass the changed value to Onvaluechange function.    
+           
+  At line 292, r: The radius of the inner circle point.    
+  */
   render = () => {
    
   return (
@@ -220,7 +226,7 @@ export default class  UserDetail extends React.Component {
                 各項球類詳細數據
               </Text>
                   
-                  
+              
               <Picker
                 selectedValue={this.state.TypeOfSport}
                 style={{ height: 25, width: width *0.24, marginLeft: width * 0.05 }}

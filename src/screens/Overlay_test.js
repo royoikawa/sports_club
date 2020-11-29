@@ -7,6 +7,7 @@ import UserDetail from './UserDetail';
 
 const {width,height} = Dimensions.get("window");
 
+
 global.Modal = ({
   visible,
   showCrossBtn,

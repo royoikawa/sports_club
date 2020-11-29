@@ -26,24 +26,48 @@ const { width, height } = Dimensions.get('window');
 //顯示可使用的場地
 
 
-export default function App() {
-  const [searchQuery, setSearchQuery] = React.useState('');
+export default class  Location_List extends React.Component  {
 
-  const onChangeSearch = (query) => setSearchQuery(query);
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+    };
+
+  }
+
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
+
+  
+  render = () => {
+
+    const { search } = this.state;
 
   return (
 
     <View style={styles.container}>
       <View style={styles.blueline}>
-        <Ionicons name="ios-arrow-back" size={36} color="white" />
+        <Ionicons name="ios-arrow-back" size={36} color="white" 
+        
+           onPress={() => {
+            this.props.navigation.goBack()
+          } }
+
+        />
         <Text style={styles.toptext}>場館資訊列表</Text>
-        <Entypo name="home" size={32} color="white" />
+        <Entypo name="home" size={32} color="white" 
+          onPress={() => {
+            this.props.navigation.navigate('Index1')
+          } }
+     />
       </View>
       <View style={styles.searchline}>
         <Searchbar
           placeholder="Search"
-          onChangeText={onChangeSearch}
-          value={searchQuery}
+          onChangeText={this.updateSearch}
+          value={search}
           icon="search-web"
           iconColor="#6A6AFF"
         />
@@ -147,6 +171,8 @@ export default function App() {
       <Footer />
     </View>
   );
+}
+
 }
 
 const styles = StyleSheet.create({

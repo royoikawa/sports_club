@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Dimensions, Text, View, StyleSheet, Image } from 'react-native';
 import { Card,Searchbar } from 'react-native-paper';
 
+import { SearchBar } from 'react-native-elements';
+
+
 import Constants from 'expo-constants';
 import {
   Ionicons,
@@ -18,24 +21,49 @@ import {
 import Footer from '../screens/Footer';
 const { width, height } = Dimensions.get('window');
 
-export default function App() {
-  const [searchQuery, setSearchQuery] = React.useState('');
+export default class  signupfor_activity extends React.Component {
+   
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+    };
 
-  const onChangeSearch = (query) => setSearchQuery(query);
+  }
 
+  updateSearch = (search) => {
+    this.setState({ search });
+  };
+
+
+ render = () => {
+
+  
+  const { search } = this.state;
+  
   return (
     <View style={styles.container}>
       <View style={styles.blueline}>
-        <Ionicons name="ios-arrow-back" size={26} color="white" />
+        <Ionicons name="ios-arrow-back" size={26} color="white" 
+          onPress={() => {
+            this.props.navigation.goBack()
+          } }
+
+        />
         <Text style={styles.toptext}>已加入活動</Text>
-        <Entypo name="home" size={24} color="white" />
+        <Entypo name="home" size={24} color="white" 
+          onPress={() => {
+            this.props.navigation.navigate('Index1')
+          } }
+
+        />
       </View>
       <View style={styles.searchline}>
        
         <Searchbar
           placeholder="Search"
-          onChangeText={onChangeSearch}
-          value={searchQuery}
+          onChangeText={this.updateSearch}
+          value={search}
           icon="search-web" 
           iconColor="#6A6AFF"
         />
@@ -70,6 +98,7 @@ export default function App() {
   );
 }
 
+}
 const styles = StyleSheet.create({
   container: {
     flex:1,

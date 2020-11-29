@@ -12,12 +12,13 @@ import signupfor_activity from '../screens/signupfor_activity';
 
 
 
+// create stack type navigation
 const Stack = createStackNavigator()
 
 function GoToButton({ screenName }) {
   const navigation = useNavigation();
 }
-
+// The main page is signupfor_activity because it is on top of Stack.Screen
 function MainNavigator() {
   return (
     <NavigationContainer>
@@ -26,6 +27,9 @@ function MainNavigator() {
       <Stack.Screen name= 'signupfor_activity' component= {signupfor_activity} />
 
       <Stack.Screen name= 'Location_List' component= {Location_List} />
+
+      <Stack.Screen name= 'UserDetail' component= {UserDetail} />
+
 
       <Stack.Screen name='Overlay_test' component={Overlay_test} />
 
