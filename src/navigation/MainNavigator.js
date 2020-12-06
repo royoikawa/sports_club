@@ -14,6 +14,10 @@ import EditingWindow from '../screens/EditingWindow';
 
 import Rating from  '../screens/Rating';
 
+import Location_detail from '../screens/Location_detail';
+
+import Mapview from '../screens/Mapview';
+
 
 
 // create stack type navigation
@@ -28,10 +32,19 @@ function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
 
+      <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
+
+
+       <Stack.Screen name= 'Mapview' component=  {Mapview}  />
+
+      
+      <Stack.Screen name= 'EditingWindow' component=  {EditingWindow}/>
+
+
       <Stack.Screen name= 'Rating' component=  {Rating} />
 
 
-      <Stack.Screen name= 'EditingWindow' component=  {EditingWindow}/>
+      
 
       <Stack.Screen name= 'signupfor_activity' component= {signupfor_activity} />
 
