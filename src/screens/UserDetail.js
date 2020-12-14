@@ -13,6 +13,8 @@ import Constants from 'expo-constants';
 
 import { useNavigation } from '@react-navigation/native';
 
+import { withNavigation } from 'react-navigation';
+
 import {
   LineChart,
   BarChart,
@@ -52,14 +54,19 @@ import Overlay_test from  '../screens/Overlay_test';
 
 import Modal from  './Overlay_test'
 
-export default class  UserDetail extends React.Component {
+
+
+export default  class  UserDetail extends React.Component {
  // set initial state in constructor
+ 
  constructor(props) {
     super(props);
     this.state = {
      TypeOfSport: '排球',
      isVisible: true,
     };
+
+    
 
     
 
@@ -98,7 +105,7 @@ export default class  UserDetail extends React.Component {
             size={26}
             color="white"
             style={styles.iconclose}
-            onPress={() => global.Modal.visible = false}
+            onPress={() => this.props.navigate('Overlay_test')}
             
           />
         

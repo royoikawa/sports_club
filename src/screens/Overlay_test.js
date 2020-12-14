@@ -36,7 +36,7 @@ export default class Overlay_test extends React.Component {
     isVisible: false,
   };
 
-  setModalVisible = visible => {
+   setModalVisible = visible => {
     this.setState({
       isVisible: visible,
     });
@@ -63,7 +63,7 @@ export default class Overlay_test extends React.Component {
 
           >
           
-         <UserDetail/>
+         <UserDetail navigate={this.props.navigation.navigate} />
           
        
 

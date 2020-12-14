@@ -93,7 +93,7 @@ export default class  signupfor_activity extends React.Component {
        
       </View>
 
-      <Footer />
+      <Footer navigate={this.props.navigation.navigate} />
     </View>
   );
 }

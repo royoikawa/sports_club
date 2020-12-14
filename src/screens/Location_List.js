@@ -168,7 +168,7 @@ export default class  Location_List extends React.Component  {
           </View>
         </Card>
       </View>
-      <Footer />
+      <Footer navigate={this.props.navigation.navigate} />
     </View>
   );
 }

@@ -1,22 +1,67 @@
 import * as React from 'react';
 import { Dimensions,Text, View, StyleSheet, Image } from 'react-native';
 import { Ionicons,Entypo,FontAwesome,FontAwesome5,Foundation,Feather,MaterialIcons,MaterialCommunityIcons,SimpleLineIcons} from '@expo/vector-icons';
+
 const { width, height } = Dimensions.get('window');
 
+import { withNavigation } from 'react-navigation';
 
-export default function Footer() {
+
+
+
+export default class  Footer extends React.Component {
+
+  render  = () =>
+  {
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.footer}>
-         <MaterialIcons name="people" size={24} color="black" />
-         <FontAwesome5 name="calendar" size={24} color="blue" />
-         <MaterialCommunityIcons name="target" size={24} color="#D26900" />
-         <Ionicons name="ios-document" size={24} color="gray" />
-         <Ionicons name="md-checkmark-circle-outline" size={24} color="#B15BFF" />
-         <Ionicons name="md-person-add" size={24} color="#FF9224" />
+      
+         <MaterialIcons name="people" size={24} color="black" 
+              onPress = { () => 
+                  alert("Ok")
+               }
+          />
+         <FontAwesome5 name="calendar" size={24} color="blue" 
+
+            onPress = { () => {
+                  this.props.navigate('Mapview')
+              } }
+         />
+         <MaterialCommunityIcons name="target" size={24} color="#D26900" 
+
+           onPress = { () => {
+                  this.props.navigate('signupfor_activity')
+              } }
+
+         />
+         <Ionicons name="ios-document" size={24} color="gray"
+          onPress = { () => {
+                  this.props.navigate('signupfor_activity')
+              } }
+
+          />
+         <Ionicons name="md-checkmark-circle-outline" size={24} color="#B15BFF" 
+
+           onPress = { () => {
+                  this.props.navigate('Mapview')
+              } }
+
+         />
+         <Ionicons name="md-person-add" size={24} color="#FF9224" 
+
+           onPress = { () => {
+                  this.props.navigate('Mapview')
+              } }
+
+         />
         </View>
     </View>
   );
+}
+
 }
 
 const styles = StyleSheet.create({

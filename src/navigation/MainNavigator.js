@@ -18,6 +18,8 @@ import Location_detail from '../screens/Location_detail';
 
 import Mapview from '../screens/Mapview';
 
+import { withNavigation } from 'react-navigation';
+
 
 
 // create stack type navigation
@@ -33,6 +35,8 @@ function MainNavigator() {
       <Stack.Navigator>
 
       <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
+
+      <Stack.Screen name= 'UserDetail' component= {UserDetail} />
 
 
        <Stack.Screen name= 'Mapview' component=  {Mapview}  />
@@ -50,7 +54,7 @@ function MainNavigator() {
 
       <Stack.Screen name= 'Location_List' component= {Location_List} />
 
-      <Stack.Screen name= 'UserDetail' component= {UserDetail} />
+      
 
 
       <Stack.Screen name='Overlay_test' component={Overlay_test} />

@@ -39,6 +39,8 @@ const { width, height } = Dimensions.get('window');
 
 const win = Dimensions.get('window');
 
+
+
 //場地詳細資訊(負責人、姓名、分數)
 
 export default class Location_detail extends React.Component {
@@ -216,7 +218,7 @@ export default class Location_detail extends React.Component {
           </View>
         </Card>
       </View>
-      <Footer />
+     <Footer navigate={this.props.navigation.navigate}/>
     </View>
   );
 
