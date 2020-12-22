@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, View, Text, StyleSheet, Image,TouchableHighlight } from 'react-native';
+import { Alert, Button, View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import {
     AntDesign,
     Ionicons,
@@ -35,18 +35,39 @@ function Index() {
             </View>
             <View style={styles.index}>
                 <View style={styles.indexLogo}>
+
+
                     <Image
                         style={styles.tinyLogo}
-                        source={require('../../Image/logo.png')}
+                        source={require('../../Image/logo2.png')}
                     />
+
                 </View>
                 <View style={styles.indexCard}>
                     <View style={{ flex: 1 }}></View>
-                    <View style={{ flex: 15, backgroundColor: 'white', borderRadius: 10, }}>
-                        <View style={{width:'25%',borderWidth:2,borderRadius:70}}>
-                            <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                                <AntDesign  name="user" size={80} color="black" onPress={()=>alert('www')}/>
+                    <View style={styles.card}>
+                        <View style={styles.userDetail}>
+                            <View style={styles.user}>
+                                <View style={styles.headPic}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+                                        <AntDesign name="user" size="70%" color="black" onPress={() => alert('www')} />
+                                    </View>
+                                </View>
+                                <View><Text>用戶名稱</Text></View>
                             </View>
+                            <View style={styles.userData}>
+                                <View style={{ flexDirection: 'row',marginLeft:15,marginBottom:30 }}>
+                                    <Text style={{ marginRight:20,fontWeight: 'bold', fontSize: 16 }}>最擅長球類</Text>
+                                    <Text style={{ color: '#F75000', fontWeight: 'bold', fontSize: 16, }}>桌球</Text>
+                                </View>
+                                <View style={{ flexDirection: 'row',marginLeft:15 }}>
+                                    <Text style={{ marginRight:20,fontWeight: 'bold', fontSize: 16 }}>技術評等</Text>
+                                    <Text style={{ color: '#F75000', fontWeight: 'bold', fontSize: 16, }}>98</Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.starScore}>
+                            <Text></Text>
                         </View>
                     </View>
                     <View style={{ flex: 1 }}></View>
@@ -82,7 +103,7 @@ const styles = StyleSheet.create({
     },
     indexLogo: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     indexCard: {
         flex: 1.5,
@@ -93,9 +114,42 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     tinyLogo: {
-        width: '45%',
+        width: '100%',
         height: '100%',
+
     },
+    headPic: {
+        width: '60%',
+        height: '55%',
+        borderWidth: 2,
+        borderRadius: 70,
+        marginBottom: 15
+    },
+    card: {
+        flex: 15,
+        backgroundColor: 'white',
+        borderRadius: 10,
+    },
+    user: {
+        flex: 2,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    userDetail: {
+        flex: 5,
+        flexDirection: 'row',
+    },
+    starScore:{
+        flex:2,
+        flexDirection: 'row',
+    },
+    userData: {
+        flex: 3,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center'
+    }
 
 
 })
