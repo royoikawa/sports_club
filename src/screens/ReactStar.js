@@ -11,6 +11,8 @@ import {
   Picker,
 } from 'react-native';
 
+import Stars from 'react-native-stars';
+
 export default class Rating1 extends React.Component {
 
   ratingCompleted(rating) {
@@ -35,15 +37,18 @@ render = () => {
       */
 
 
-     <Rating 
-      fractions={1} startingValue={3.3} 
-      imageSize={60} 
-      minValue={0}
-      showRating 
-     
-      onFinishRating={this.ratingCompleted}
-     />
-    
+    <Stars
+    half={true}
+    spacing={12}
+    update={(val)=>{this.setState({stars: val})}}
+    count={5}
+    starSize={40}
+    backingColor='cornsilk' 
+    fullStar= {require('../screens/starFilled.png')}
+    emptyStar= {require('../screens/starEmpty.png')}
+    halfStar={require('../screens/starHalf.png')}
+
+    />
  
 
       )

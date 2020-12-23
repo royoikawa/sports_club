@@ -6,7 +6,6 @@ import {
   View,
   StyleSheet,
   TouchableHighlight,
-  TouchableOpacity,
 } from 'react-native';
 import Constants from 'expo-constants';
 
@@ -33,8 +32,7 @@ import {
   SimpleLineIcons,
 } from '@expo/vector-icons';
 
-import Modal from 'react-native-modal';
-
+import { Button, Paragraph, Dialog, Portal, Provider as PaperProvider} from 'react-native-paper';
 
 //抓取螢幕寬高度
 const { width, height } = Dimensions.get('window');
@@ -52,7 +50,6 @@ export default class Location_detail extends React.Component {
             setVisible: false,
             visible : false,
             starCount: 3.5,
-            isModalVisible:false,
     };
 
 }
@@ -62,24 +59,15 @@ export default class Location_detail extends React.Component {
         this.setState({ visible: true });
      }
 
-    
+     hidedialog = () =>
+
+    {   
+    this.setState({ visible: false });
+    }
 
      componentWillUnmount() {
     this._isMounted = false;
   }
-
-
-    openModal = () =>{
-        this.setState({
-        isModalVisible:true
-        })
-   }
-
-    closeModal = () =>{
-    this.setState({
-    isModalVisible:false
-    })
-    }
 
 
   render = () => {
@@ -171,37 +159,36 @@ export default class Location_detail extends React.Component {
                 margin: 3.5,
                 marginLeft: 15,
               }}
-            onPress={()=>this.openModal()}
+            onPress={this.DoRating}
               >
               <Text style={{ fontSize: 16, color: '#BB5E00' }}>我要評分</Text>
             </TouchableHighlight>
-            <Modal   isVisible={this.state.isModalVisible} style={{backgroundColor:'white',maxHeight:Dimensions.get('window').height / 2}}>
-                <View style={{ flex: 1,justifyContent:'center',backgroundColor:'#0072E3'}}>
-                
-                  <Text style={{textAlign:'center',fontSize:24,color:'#FF7575',fontWeight:'bold'}}>請給評分(1~5顆星)</Text>
-                  <Rating
-                        type='star'
-                        fractions={1} startingValue={3} 
-                        imageSize={40}
-                        ratingColor='#3498db'
-                        ratingBackgroundColor='#0072E3'
-                        showRating
-                        onFinishRating={this.ratingCompleted}
-                  />
+
+         <PaperProvider>
+
+            <Portal>
+                <Dialog visible={this.state.visible} onDismiss={this.hidedialog} style={styles.dialogsty}>
+                <Dialog.Title>你覺得場地的綜合表現如何(如大小、舒適度)?</Dialog.Title>
+                <Dialog.Content>
+                <Rating
+                  type='star'
+                  ratingCount={5}
+                  imageSize={50}
+                  showRating
+                  fractions="{1}" startingValue="{3.3}"
+                  onFinishRating={this.ratingCompleted}
+                />
                      
-                </View>
-                <View style={{ flex: 1,justifyContent:'center',position:'absolute',bottom:0}}>
-                  <View style={{flexDirection:'row',}}>
-                      <TouchableOpacity style={{backgroundColor:'green',width:'50%'}} onPress={()=>this.closeModal()}>
-                          <Text style={{color:'white',textAlign:'center',padding:10}}>Ok</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity style={{backgroundColor:'red',width:'50%'}} onPress={()=>this.closeModal()}>
-                        <Text style={{color:'white',textAlign:'center',padding:10}}>Cancel</Text>
-                      </TouchableOpacity>
-                  </View>
-                </View>
-            </Modal>
-        
+                </Dialog.Content>
+                <Dialog.Actions>
+                    
+                    <Button onPress={this.hidedialog}>Done</Button>
+                </Dialog.Actions>
+                </Dialog>
+            
+                </Portal>
+       </PaperProvider>
+
           </View>
 
           <View style={styles.foodsty}>

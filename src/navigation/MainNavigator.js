@@ -18,7 +18,9 @@ import Location_detail from '../screens/Location_detail';
 
 import Mapview from '../screens/Mapview';
 
-import { withNavigation } from 'react-navigation';
+import ReactStar from '../screens/ReactStar';
+
+import Modal_test from '../screens/Modal_test';
 
 
 
@@ -34,7 +36,20 @@ function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
 
-      <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
+       <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
+
+      <Stack.Screen name= 'Rating' component=  {Rating} />
+
+      
+
+       <Stack.Screen name= 'Modal_test' component=  {Modal_test}/>
+      
+      
+
+      <Stack.Screen name='ReactStar' component=  {ReactStar} />
+
+       
+     
 
       <Stack.Screen name= 'UserDetail' component= {UserDetail} />
 
@@ -45,7 +60,7 @@ function MainNavigator() {
       <Stack.Screen name= 'EditingWindow' component=  {EditingWindow}/>
 
 
-      <Stack.Screen name= 'Rating' component=  {Rating} />
+     
 
 
       

@@ -227,7 +227,7 @@ export default  class  UserDetail extends React.Component {
 
           <View>
             
-            <View style={{ flexDirection: 'row', marginTop: 25 }}>
+            <View style={{ flexDirection: 'row', marginTop: height*0.035 }}>
               <Text
                 style={{ color: '#000000', fontWeight: 'bold', fontSize: 18,paddingLeft : width *0.15 }}>
                 各項球類詳細數據
@@ -236,7 +236,7 @@ export default  class  UserDetail extends React.Component {
               
               <Picker
                 selectedValue={this.state.TypeOfSport}
-                style={{ height: 25, width: width *0.24, marginLeft: width * 0.05 }}
+                style={{ height: height*0.035, width: width *0.27, marginLeft: width * 0.05 }}
                 onValueChange={(ball) => {
                   this.setState({TypeOfSport : ball})
                  
@@ -288,7 +288,7 @@ export default  class  UserDetail extends React.Component {
                 ],
               }}
               width={Dimensions.get('window').width * 0.895} // from react-native
-              height={205}
+              height={height * 0.33}
               yAxisSuffix=""
               yAxisInterval={1} // optional, defaults to 1
               chartConfig={{
@@ -323,7 +323,7 @@ export default  class  UserDetail extends React.Component {
 const styles = StyleSheet.create({
   container: {
    
-    paddingTop: Constants.statusBarHeight * 1,
+    paddingTop: Constants.statusBarHeight * 0.5,
   },
   userdatatop: {
     flexDirection: 'row',
@@ -342,7 +342,7 @@ const styles = StyleSheet.create({
   userdatabottom: {
     flexDirection: 'row',
     width: width * 0.9,
-    height: height * 0.40,
+    height: height * 0.41,
     backgroundColor: '#84C1FF',
     
     borderLeftWidth: 1,
