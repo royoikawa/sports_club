@@ -56,12 +56,12 @@ function Index() {
                                 <View><Text>用戶名稱</Text></View>
                             </View>
                             <View style={styles.userData}>
-                                <View style={{ flexDirection: 'row',marginLeft:15,marginBottom:30 }}>
-                                    <Text style={{ marginRight:20,fontWeight: 'bold', fontSize: 16 }}>最擅長球類</Text>
+                                <View style={{ flexDirection: 'row', marginLeft: 15, marginBottom: 30 }}>
+                                    <Text style={{ marginRight: 20, fontWeight: 'bold', fontSize: 16 }}>最擅長球類</Text>
                                     <Text style={{ color: '#F75000', fontWeight: 'bold', fontSize: 16, }}>桌球</Text>
                                 </View>
-                                <View style={{ flexDirection: 'row',marginLeft:15 }}>
-                                    <Text style={{ marginRight:20,fontWeight: 'bold', fontSize: 16 }}>技術評等</Text>
+                                <View style={{ flexDirection: 'row', marginLeft: 15 }}>
+                                    <Text style={{ marginRight: 20, fontWeight: 'bold', fontSize: 16 }}>技術評等</Text>
                                     <Text style={{ color: '#F75000', fontWeight: 'bold', fontSize: 16, }}>98</Text>
                                 </View>
                             </View>
@@ -74,13 +74,76 @@ function Index() {
                 </View>
                 <View style={styles.indexButton}>
                     <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={styles.iconButt1}>
+                            <View style={styles.butt}>
+                                <View style={styles.buttFrame1}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+                                        <MaterialIcons name="people-outline" size="70%" color="white" />
+                                    </View>
+                                </View>
+                                <View><Text>尋找球友</Text></View>
+                            </View>
+                        </View>
+                        <View style={styles.iconButt1}>
+                            <View style={styles.butt}>
+                                <View style={styles.buttFrame2}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+                                        <FontAwesome name="list-alt" size="55%" color="white" />
+                                    </View>
+                                </View>
+                                <View><Text>臨打列表</Text></View>
+                            </View>
+                        </View>
+                        <View style={styles.iconButt1}>
+                            <View style={styles.butt}>
+                                <View style={styles.buttFrame3}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+                                    <   Feather name="map-pin" size="55%" color="white" />
+                                    </View>
+                                </View>
+                                <View><Text>場館資訊</Text></View>
+                            </View>
+                        </View>
 
                     </View>
-                    <View style={{ flex: 1, flexDirection: 'row' }}></View>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={styles.iconButt}>
+                            <View style={styles.butt}>
+                                <View style={styles.buttFrame4}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+                                        <FontAwesome5 name="clipboard-list" size="60%" color="white" />
+                                    </View>
+                                </View>
+                                <View><Text>已加活動</Text></View>
+                            </View>
+                        </View>
+                        <View style={styles.iconButt}>
+                            <View style={styles.butt}>
+                                <View style={styles.buttFrame5}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+                                        <Feather name="check-circle" size="60%" color="white" />
+                                    </View>
+                                </View>
+                                <View><Text>評分數值</Text></View>
+                            </View>
+                        </View>
+                        <View style={styles.iconButt}>
+                            <View style={styles.butt}>
+                                <View style={styles.buttFrame6}>
+                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+                                    <SimpleLineIcons name="magnifier-add" size="60%" color="white" />                                    
+                                    </View>
+                                </View>
+                                <View><Text>好友頁面</Text></View>
+                            </View>
+                        </View>
+                    </View>
                 </View>
             </View>
         </View>
     )
+
+    
 }
 const styles = StyleSheet.create({
     container: {
@@ -140,8 +203,8 @@ const styles = StyleSheet.create({
         flex: 5,
         flexDirection: 'row',
     },
-    starScore:{
-        flex:2,
+    starScore: {
+        flex: 2,
         flexDirection: 'row',
     },
     userData: {
@@ -149,7 +212,67 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'flex-start',
         justifyContent: 'center'
+    },
+    iconButt1: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    iconButt: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+    },
+    butt: {
+        flexDirection: 'column',
+        width: '80%',
+        height: '80%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    buttFrame1: {
+        width: '90%',
+        height: '60%',
+        borderRadius: 70,
+        backgroundColor:'#02DF82',
+        justifyContent: 'center',
+    },
+    buttFrame2: {
+        width: '90%',
+        height: '60%',
+        borderRadius: 70,
+        backgroundColor:'#2894FF',
+        justifyContent: 'center',
+    },
+    buttFrame3: {
+        width: '90%',
+        height: '60%',
+        borderRadius: 70,
+        backgroundColor:'#FF9224',
+        justifyContent: 'center',
+    },
+    buttFrame4: {
+        width: '90%',
+        height: '60%',
+        borderRadius: 70,
+        backgroundColor:'#ADADAD',
+        justifyContent: 'center',
+    },
+    buttFrame5: {
+        width: '90%',
+        height: '60%',
+        borderRadius: 70,
+        backgroundColor:'#D3A4FF',
+        justifyContent: 'center',
+    },
+    buttFrame6: {
+        width: '90%',
+        height: '60%',
+        borderRadius: 70,
+        backgroundColor:'#EAC100',
+        justifyContent: 'center',
     }
+
 
 
 })
