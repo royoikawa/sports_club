@@ -78,7 +78,7 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame1}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <MaterialIcons name="people-outline" size="70%" color="white" />
+                                        <SimpleLineIcons name="magnifier-add" size="60%" color="white" />
                                     </View>
                                 </View>
                                 <View><Text>尋找球友</Text></View>
@@ -98,7 +98,7 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame3}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                    <   Feather name="map-pin" size="55%" color="white" />
+                                        <   Feather name="map-pin" size="55%" color="white" />
                                     </View>
                                 </View>
                                 <View><Text>場館資訊</Text></View>
@@ -131,7 +131,8 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame6}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                    <SimpleLineIcons name="magnifier-add" size="60%" color="white" />                                    
+
+                                        <MaterialIcons name="people-outline" size="70%" color="white" />
                                     </View>
                                 </View>
                                 <View><Text>好友頁面</Text></View>
@@ -143,7 +144,7 @@ function Index() {
         </View>
     )
 
-    
+
 }
 const styles = StyleSheet.create({
     container: {
@@ -234,42 +235,42 @@ const styles = StyleSheet.create({
         width: '90%',
         height: '60%',
         borderRadius: 70,
-        backgroundColor:'#02DF82',
+        backgroundColor: '#02DF82',
         justifyContent: 'center',
     },
     buttFrame2: {
         width: '90%',
         height: '60%',
         borderRadius: 70,
-        backgroundColor:'#2894FF',
+        backgroundColor: '#2894FF',
         justifyContent: 'center',
     },
     buttFrame3: {
         width: '90%',
         height: '60%',
         borderRadius: 70,
-        backgroundColor:'#FF9224',
+        backgroundColor: '#FF9224',
         justifyContent: 'center',
     },
     buttFrame4: {
         width: '90%',
         height: '60%',
         borderRadius: 70,
-        backgroundColor:'#ADADAD',
+        backgroundColor: '#ADADAD',
         justifyContent: 'center',
     },
     buttFrame5: {
         width: '90%',
         height: '60%',
         borderRadius: 70,
-        backgroundColor:'#D3A4FF',
+        backgroundColor: '#D3A4FF',
         justifyContent: 'center',
     },
     buttFrame6: {
         width: '90%',
         height: '60%',
         borderRadius: 70,
-        backgroundColor:'#EAC100',
+        backgroundColor: '#EAC100',
         justifyContent: 'center',
     }
 
