@@ -36,6 +36,8 @@ function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
 
+      
+
        <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
 
       <Stack.Screen name= 'Rating' component=  {Rating} />
