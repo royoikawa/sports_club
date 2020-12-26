@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { Alert, Button, View, Text, StyleSheet, Image, TouchableHighlight, TextInput } from 'react-native';
 import {
     AntDesign,
     Ionicons,
@@ -13,22 +13,39 @@ import {
     MaterialCommunityIcons,
     SimpleLineIcons,
 } from '@expo/vector-icons';
-function Login({navigation}) {
+function Login({ navigation }) {
     return (
-        <View>
-            <Text>lll</Text>
-            <Button 
-            title="go to index"
-            onPress={() => navigation.navigate('Index')}
+        <View style={styles.container}>
+            <Image
+                style={styles.logo}
+                source={require('../../Image/logo_w.png')}
+            />
+            <TextInput
+                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                onChangeText={text => onChangeText()}
+                value="acc"
+
+            />
+            <Button
+                title="go to index"
+                onPress={() => navigation.navigate('Index')}
             />
         </View>
-        
+
     )
 
 
 }
 const styles = StyleSheet.create({
-    
+    logo: {
+        width: '100%',
+        height: '30%'
+    },
+    container: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'white',
+    }
 
 })
 export default Login
