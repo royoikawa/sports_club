@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Component} from 'react';
 import { Alert, Button, View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import {
     AntDesign,
@@ -14,6 +14,7 @@ import {
     SimpleLineIcons,
 } from '@expo/vector-icons';
 function Index() {
+
     return (
 
         <View style={styles.container}>
