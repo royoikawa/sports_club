@@ -39,11 +39,13 @@ function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
 
+      <Stack.Screen name="Login" component={Login}/>
+
       <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
 
        <Stack.Screen name="Index" component={Index} />
 
-      <Stack.Screen name="Login" component={Login}/>
+      
 
        
 

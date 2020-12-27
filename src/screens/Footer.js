@@ -5,6 +5,7 @@ import { Ionicons,Entypo,FontAwesome,FontAwesome5,Foundation,Feather,MaterialIco
 const { width, height } = Dimensions.get('window');
 
 import { withNavigation } from 'react-navigation';
+import Location_detail from './Location_detail';
 
 
 
@@ -21,7 +22,7 @@ export default class  Footer extends React.Component {
       
          <MaterialIcons name="people" size={24} color="black" 
               onPress = { () => 
-                  alert("Ok")
+                  this.props.navigate('Index')
                }
           />
          <FontAwesome5 name="calendar" size={24} color="blue" 
@@ -46,7 +47,7 @@ export default class  Footer extends React.Component {
          <Ionicons name="md-checkmark-circle-outline" size={24} color="#B15BFF" 
 
            onPress = { () => {
-                  this.props.navigate('Mapview')
+                  this.props.navigate('Location_detail')
               } }
 
          />

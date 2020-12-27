@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Alert, Button, View, Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
+import { Alert, Button,Dimensions, View, Text, StyleSheet, Image,TouchableOpacity, TouchableHighlight } from 'react-native';
 import {
     AntDesign,
     Ionicons,
@@ -13,7 +13,28 @@ import {
     MaterialCommunityIcons,
     SimpleLineIcons,
 } from '@expo/vector-icons';
-function Index() {
+
+import Modal from 'react-native-modal';
+import UserDetail from './UserDetail';
+
+export default class Index  extends React.Component {
+
+    state = {
+    isModalVisible:false
+    }
+
+    openModal = () =>{
+        this.setState({
+        isModalVisible:true
+        })
+   }
+
+    closeModal = () =>{
+    this.setState({
+    isModalVisible:false
+    })
+    }
+    render(){
 
     return (
 
@@ -41,6 +62,7 @@ function Index() {
                     <Image
                         style={styles.tinyLogo}
                         source={require('../../Image/logo2.png')}
+
                     />
 
                 </View>
@@ -51,7 +73,12 @@ function Index() {
                             <View style={styles.user}>
                                 <View style={styles.headPic}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <AntDesign name="user" size="70%" color="black" onPress={() => alert('www')} />
+                                        <AntDesign name="user" size={42} color="black" onPress={() => this.openModal() } />
+                                        <Modal animationIn="slideInUp" animationOut="slideOutDown"    onBackdropPress={()=>this.closeModal()} isVisible={this.state.isModalVisible} onRequestClose={() => console.log('onRequestClose...')}  style={{backgroundColor:'white',maxHeight:Dimensions.get('window').height / 2,marginTop: Dimensions.get('window').height / 4.5}}>
+                                            
+                                            
+                                            <UserDetail />
+                                        </Modal>
                                     </View>
                                 </View>
                                 <View><Text>用戶名稱</Text></View>
@@ -79,7 +106,9 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame1}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <SimpleLineIcons name="magnifier-add" size="60%" color="white" />
+                                        <SimpleLineIcons name="magnifier-add" size={30} color="white" 
+                                            onPress={() => this.props.navigation.navigate('Index')}
+                                        />
                                     </View>
                                 </View>
                                 <View><Text>尋找球友</Text></View>
@@ -89,7 +118,7 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame2}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <FontAwesome name="list-alt" size="55%" color="white" />
+                                        <FontAwesome name="list-alt" size={30} color="white" />
                                     </View>
                                 </View>
                                 <View><Text>臨打列表</Text></View>
@@ -99,7 +128,9 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame3}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <   Feather name="map-pin" size="55%" color="white" />
+                                        <Feather name="map-pin" size={30} color="white" 
+                                            onPress={() => this.props.navigation.navigate('Location_List')}
+                                        />
                                     </View>
                                 </View>
                                 <View><Text>場館資訊</Text></View>
@@ -112,7 +143,9 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame4}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <FontAwesome5 name="clipboard-list" size="60%" color="white" />
+                                        <FontAwesome5 name="clipboard-list" size={30} color="white"
+                                        onPress={() => this.props.navigation.navigate('signupfor_activity')}
+                                         />
                                     </View>
                                 </View>
                                 <View><Text>已加活動</Text></View>
@@ -122,7 +155,7 @@ function Index() {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame5}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <Feather name="check-circle" size="60%" color="white" />
+                                        <Feather name="check-circle" size={30} color="white" />
                                     </View>
                                 </View>
                                 <View><Text>評分數值</Text></View>
@@ -133,7 +166,7 @@ function Index() {
                                 <View style={styles.buttFrame6}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
 
-                                        <MaterialIcons name="people-outline" size="70%" color="white" />
+                                        <MaterialIcons name="people-outline" size={30}  color="white" />
                                     </View>
                                 </View>
                                 <View><Text>好友頁面</Text></View>
@@ -144,6 +177,8 @@ function Index() {
             </View>
         </View>
     )
+
+    }
 
 
 }
@@ -278,4 +313,3 @@ const styles = StyleSheet.create({
 
 
 })
-export default Index

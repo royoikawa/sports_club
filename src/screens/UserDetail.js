@@ -61,6 +61,7 @@ export default  class  UserDetail extends React.Component {
  
  constructor(props) {
     super(props);
+    
     this.state = {
      TypeOfSport: '排球',
      isVisible: true,
@@ -68,7 +69,7 @@ export default  class  UserDetail extends React.Component {
 
     
 
-    
+   
 
   
 
@@ -105,7 +106,9 @@ export default  class  UserDetail extends React.Component {
             size={26}
             color="white"
             style={styles.iconclose}
-            onPress={() => this.props.navigate('Overlay_test')}
+            onPress={() =>  
+            this.setState({isModalVisible:false})
+            }
             
           />
         
