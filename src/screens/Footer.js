@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
      flexDirection :"row",
      justifyContent: "space-around",
      alignItems : "center",
-     marginLeft :10,
+     marginLeft :width * 0.04,
      marginTop : -22,
      width : width ,
      height : height * 0.5 ,

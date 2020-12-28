@@ -97,7 +97,7 @@ export default  class  UserDetail extends React.Component {
     <View style={styles.container}>
       <View style={styles.userdatatop} navigation={this.props.navigation}>
         <Text style={{ color: '#ffffff',alignItems:"baseline" ,fontSize : 18}}>用戶名</Text>
-        <Text style={{ paddingLeft:width * 0.35 }}></Text>
+        
        
         <TouchableHighlight>
 
@@ -190,7 +190,7 @@ export default  class  UserDetail extends React.Component {
 
 
           <View>
-            <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <View style={{ flexDirection: 'row', marginTop: height *0.035 }}>
               <Text
                 style={{ color: '#000000', fontWeight: 'bold', fontSize: 18 ,paddingLeft : width *0.15}}>
                 球品評價:
@@ -263,17 +263,17 @@ export default  class  UserDetail extends React.Component {
          
         </View>
       </View>
-       <View style={{width: width * 0.9 , borderBottomLeftRadius: 2,
-    borderBottomRightRadius: 2,borderBottomWidth :1,borderLeftWidth:1,borderRightWidth:1}}>
+       <View style={{width: width * 0.92 , borderBottomLeftRadius: 2,
+    borderBottomRightRadius: 2,borderBottomWidth :1,borderLeftWidth:1,borderRightWidth:1.5}}>
             <LineChart
               data={{
                 labels: [
                   '接發',
                   '扣球',
                   '舉球',
-                  '發球\t\t',
-                  '修正舉球\t\t\t',
-                  '修正攻擊',
+                  '發球\t',
+                  '修舉\t',
+                  '修攻',
                   '接扣',
                 ],
                 datasets: [
@@ -290,7 +290,7 @@ export default  class  UserDetail extends React.Component {
                   },
                 ],
               }}
-              width={Dimensions.get('window').width * 0.895} // from react-native
+              width={width * 0.91666} // from react-native
               height={height * 0.33}
               yAxisSuffix=""
               yAxisInterval={1} // optional, defaults to 1
@@ -327,13 +327,14 @@ const styles = StyleSheet.create({
   container: {
    
     paddingTop: Constants.statusBarHeight * 0.5,
+    alignItems : 'center',
   },
   userdatatop: {
     flexDirection: 'row',
     backgroundColor: '#6A6AFF',
-    width: width * 0.9,
+    width: width * 0.92,
     height: height * 0.045,
-    
+    justifyContent :'space-between',
     alignItems: 'center',
     paddingLeft: width * 0.35,
     borderBottomWidth: 1,
@@ -344,7 +345,7 @@ const styles = StyleSheet.create({
   
   userdatabottom: {
     flexDirection: 'row',
-    width: width * 0.9,
+    width: width * 0.92,
     height: height * 0.41,
     backgroundColor: '#84C1FF',
     
@@ -374,6 +375,6 @@ const styles = StyleSheet.create({
     marginLeft : width * 0.15,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 6,
+    paddingTop: 3,
   },
 });
