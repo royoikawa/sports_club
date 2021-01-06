@@ -13,12 +13,18 @@ import {
     MaterialCommunityIcons,
     SimpleLineIcons,
 } from '@expo/vector-icons';
-function Login({ navigation }) {
+function Reg({ navigation }) {
     return (
         <View style={styles.container}>
             <Image
                 style={styles.logo}
                 source={require('../../Image/logo_w.png')}
+            />
+            <TextInput
+                style={styles.textinput}
+                onChangeText={text => onChangeText()}
+                placeholder='email or phone'
+
             />
             <TextInput
                 style={styles.textinput}
@@ -33,11 +39,11 @@ function Login({ navigation }) {
 
             />
             <TouchableOpacity onPress={() => navigation.navigate('Index')} style={styles.button}>
-                <Text style={{ color: 'white' }}>登入</Text>
+                <Text style={{ color: 'white' }}>註冊</Text>
             </TouchableOpacity>
             <View style={{ flexDirection: 'row' }}>
-                <Text style={{ color: 'gray' }}>尚未註冊?</Text>
-                <Text style={{ color: '#2894FF' }} onPress={() => navigation.navigate('Reg')}>註冊</Text></View>
+                <Text style={{ color: 'gray' }}>已有帳號?</Text>
+                <Text style={{ color: '#2894FF' }} onPress={() => navigation.navigate('Login')}>登入</Text></View>
         </View>
 
     )
@@ -78,4 +84,4 @@ const styles = StyleSheet.create({
     }
 
 })
-export default Login
+export default Reg
