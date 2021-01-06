@@ -28,6 +28,7 @@ import Modal_test from '../screens/Modal_test';
 
 
 // create stack type navigation
+import Reg from '../screens/Reg'
 const Stack = createStackNavigator()
 
 function GoToButton({ screenName }) {
@@ -99,6 +100,8 @@ function MainNavigator() {
         
         
        
+       
+        <Stack.Screen name="Reg" component={Reg} />
       </Stack.Navigator>
     </NavigationContainer>
   )
