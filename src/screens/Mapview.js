@@ -1,10 +1,24 @@
 import React from 'react';
 import MapView from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StackRouter } from 'react-navigation';
 
 const { width, height } = Dimensions.get("window");
+
+
 export default class Mapview extends React.Component {
-  render() {
+
+  constructor(props) {
+    super(props);
+    this.state ={
+      city : this.props.route.params.user,
+    }
+    //let yy = navigation.getParam('params');
+   
+}
+ 
+  render = () =>  {
+    console.log(this.props.route.params.user);
     return (
       <View style={styles.container}>
         <MapView
@@ -18,6 +32,7 @@ export default class Mapview extends React.Component {
           }}
         >
         </MapView>
+        <Text>Welcome to {this.state.city}</Text>
       </View>
     );
   }

@@ -49,7 +49,7 @@ export default class  Location_List extends React.Component  {
 
     <View style={styles.container}>
       <View style={styles.blueline}>
-        <Ionicons name="ios-arrow-back" size={36} color="white" 
+        <Ionicons name="ios-arrow-back" size={30} color="white" 
         
            onPress={() => {
             this.props.navigation.goBack()
@@ -57,7 +57,7 @@ export default class  Location_List extends React.Component  {
 
         />
         <Text style={styles.toptext}>場館資訊列表</Text>
-        <Entypo name="home" size={32} color="white" 
+        <Entypo name="home" size={30} color="white" 
           onPress={() => {
             this.props.navigation.navigate('Index1')
           } }
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   },
   toptext: {
     color: '#FCFCFC',
-    fontSize: 23,
+    fontSize: 22,
     textAlign: 'center',
   },
   searchline: {

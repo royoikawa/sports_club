@@ -6,6 +6,9 @@ import Index1 from '../screens/Index1'
 import Overlay from '../screens/Overlay'
 import Overlay_test from  '../screens/Overlay_test';
 
+import Index from '../screens/Index'
+import Login from '../screens/Login'
+
 import Location_List from '../screens/Location_List';
 
 import signupfor_activity from '../screens/signupfor_activity';
@@ -36,9 +39,15 @@ function MainNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
 
+      <Stack.Screen name="Login" component={Login}/>
+
+      <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
+
+       <Stack.Screen name="Index" component={Index} />
+
       
 
-       <Stack.Screen name= 'Location_detail' component=  {Location_detail}/>
+       
 
       <Stack.Screen name= 'Rating' component=  {Rating} />
 
@@ -88,6 +97,8 @@ function MainNavigator() {
        
         
         
+        
+       
       </Stack.Navigator>
     </NavigationContainer>
   )
