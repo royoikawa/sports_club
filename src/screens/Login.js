@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, View, Text, StyleSheet, Image, TouchableHighlight, TextInput } from 'react-native';
+import { Alert, Button, View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
 import {
     AntDesign,
     Ionicons,
@@ -21,20 +21,30 @@ function Login({ navigation }) {
                 source={require('../../Image/logo_w.png')}
             />
             <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                style={styles.textinput}
                 onChangeText={text => onChangeText()}
-                value="acc"
+                placeholder='acc'
 
             />
-            <Button
-                title="go to index"
-                onPress={() => navigation.navigate('Index')}
+            <TextInput
+                style={styles.textinput}
+                onChangeText={text => onChangeText()}
+                placeholder='password'
+
             />
+            <TouchableOpacity onPress={() => navigation.navigate('Index')} style={styles.button}>
+                <Text style={{ color: 'white' }}>登入</Text>
+            </TouchableOpacity>
+            <Text>尚未註冊?</Text>
+            <Text>去註冊</Text>
         </View>
 
     )
 
 
+}
+function onChangeText() {
+    alert('aa')
 }
 const styles = StyleSheet.create({
     logo: {
@@ -45,6 +55,25 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: 'white',
+        alignItems: 'center'
+    },
+    textinput: {
+        height: 55,
+        borderColor: 'gray',
+        borderWidth: 1,
+        width: '75%',
+        borderRadius: 10,
+        marginBottom: 20
+    },
+    button: {
+        backgroundColor: '#46A3FF',
+        width: '75%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 40,
+        borderRadius: 10,
+        marginBottom: 20
+
     }
 
 })
