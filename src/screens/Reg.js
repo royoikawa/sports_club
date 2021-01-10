@@ -22,7 +22,7 @@ function Reg({ navigation }) {
             />
             <TextInput
                 style={styles.textinput}
-                onChangeText={text => onChangeText()}
+                onChangeText={text => testAPI()}
                 placeholder='email or phone'
 
             />
@@ -52,6 +52,16 @@ function Reg({ navigation }) {
 }
 function onChangeText() {
     alert('aa')
+}
+function testAPI(){
+    var Airtable = require('airtable');
+    var base = new Airtable({apiKey: 'keyUwcLvTO51TNEHV'}).base('appJtWi1JYXIRK8zi');
+
+    base('User').find('recsvwr3PFeJEUbAb', function(err, record) {
+    if (err) { console.error(err); return; }
+    alert('qqq')
+    alert('Retrieved', record.id);
+});
 }
 const styles = StyleSheet.create({
     logo: {
