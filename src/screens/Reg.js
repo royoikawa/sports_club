@@ -54,14 +54,13 @@ function onChangeText() {
     alert('aa')
 }
 function testAPI(){
-    var Airtable = require('airtable');
-    var base = new Airtable({apiKey: 'keyUwcLvTO51TNEHV'}).base('appJtWi1JYXIRK8zi');
+    const axios_config = {
+        headers: {'Authorization': 'Bearer keyUwcLvTO51TNEHV'}
+    };
+    const url="https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
+    const result = await axios.get(url,axios_config);
+    console.log(result)
 
-    base('User').find('recsvwr3PFeJEUbAb', function(err, record) {
-    if (err) { console.error(err); return; }
-    alert('qqq')
-    alert('Retrieved', record.id);
-});
 }
 const styles = StyleSheet.create({
     logo: {
