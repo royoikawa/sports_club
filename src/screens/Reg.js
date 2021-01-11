@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Alert, Button, View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
 import {
     AntDesign,
@@ -58,8 +59,12 @@ function testAPI(){
         headers: {'Authorization': 'Bearer keyUwcLvTO51TNEHV'}
     };
     const url="https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
-    const result = await axios.get(url,axios_config);
-    console.log(result)
+    res()
+    async function res(){
+        const result = await axios.get(url,axios_config);
+        alert(result.data.records[0].id)
+    }
+    
 
 }
 const styles = StyleSheet.create({
