@@ -18,6 +18,7 @@ function Reg({ navigation }) {
     const [email, setEmail] = useState("");
     const [acc, setAcc] = useState("");
     const [pass, setPass] = useState("");
+    const [name,setName] = useState("")
     const axios_config = {
         headers: {
             'Authorization': 'Bearer keyUwcLvTO51TNEHV',
@@ -33,7 +34,8 @@ function Reg({ navigation }) {
             "fields": {
                 "uid": parseInt(acc),
                 "u_mail": email,
-                "u_pass": pass
+                "u_pass": pass,
+                "u_name": name
             }
         }
 
@@ -73,6 +75,12 @@ function Reg({ navigation }) {
                 style={styles.textinput}
                 onChangeText={text => setEmail(text)}
                 placeholder='email or phone'
+
+            />
+            <TextInput
+                style={styles.textinput}
+                onChangeText={text => setName(text)}
+                placeholder='name'
 
             />
             <TextInput
