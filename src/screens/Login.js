@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Alert, Button, View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
 import {
     AntDesign,
@@ -14,6 +15,50 @@ import {
     SimpleLineIcons,
 } from '@expo/vector-icons';
 function Login({ navigation }) {
+
+    
+    const [acc, setAcc] = useState("");
+    const [pass, setPass] = useState("");
+    const axios_config = {
+        headers: { 'Authorization': 'Bearer keyUwcLvTO51TNEHV' }
+    };
+    const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
+
+    function onPressToIndex(name) {
+      navigation.navigate("Index", { name});
+    }
+    async function res() {
+        const result = await axios.get(url, axios_config);
+        //alert((result.data.records).length)
+        var len = (result.data.records).length
+        //alert(len)
+        var flag = 0
+        for(var i=0;i<len;i++){
+            if (acc == result.data.records[i].fields.uid){
+                flag = 1
+                if(pass == result.data.records[i].fields.u_pass){
+                    alert(acc)
+                    alert(pass)
+                    onPressToIndex(result.data.records[i].fields.u_name);
+
+                    
+                    //navigation.navigate('Index')
+                }
+                else{
+                    alert('密碼錯誤')
+                }
+                
+            }
+        }
+        if (flag==0){
+            alert('無此帳號')
+        }
+        alert(result.data.records[4].fields.uid)
+    }
+    function Login(){
+        res()
+        //navigation.navigate('Index')
+    }
     return (
         <View style={styles.container}>
             <Image
@@ -22,17 +67,17 @@ function Login({ navigation }) {
             />
             <TextInput
                 style={styles.textinput}
-                onChangeText={text => onChangeText()}
+                onChangeText={text =>setAcc(text) }
                 placeholder='acc'
 
             />
             <TextInput
                 style={styles.textinput}
-                onChangeText={text => onChangeText()}
+                onChangeText={text => setPass(text)}
                 placeholder='password'
 
             />
-            <TouchableOpacity onPress={() => navigation.navigate('Index')} style={styles.button}>
+            <TouchableOpacity onPress={Login} style={styles.button}>
                 <Text style={{ color: 'white' }}>登入</Text>
             </TouchableOpacity>
             <View style={{ flexDirection: 'row' }}>
@@ -43,9 +88,6 @@ function Login({ navigation }) {
     )
 
 
-}
-function onChangeText() {
-    alert('aa')
 }
 const styles = StyleSheet.create({
     logo: {

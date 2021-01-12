@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Alert, Button, View, Text, StyleSheet, Image, TouchableOpacity, TextInput } from 'react-native';
 import {
     AntDesign,
@@ -14,6 +15,56 @@ import {
     SimpleLineIcons,
 } from '@expo/vector-icons';
 function Reg({ navigation }) {
+    const [email, setEmail] = useState("");
+    const [acc, setAcc] = useState("");
+    const [pass, setPass] = useState("");
+    const [name,setName] = useState("")
+    const axios_config = {
+        headers: {
+            'Authorization': 'Bearer keyUwcLvTO51TNEHV',
+            'Content-Type': 'application/json'
+        }
+    };
+    const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
+    async function sendData() {
+
+        const newPerson =
+
+        {
+            "fields": {
+                "uid": parseInt(acc),
+                "u_mail": email,
+                "u_pass": pass,
+                "u_name": name
+            }
+        }
+
+
+
+
+        //alert(newPerson.fields.uid);
+
+
+       
+        const result = await axios.post(url, newPerson, axios_config);
+        
+        alert(result.data.fields.uid)
+        //console.log(result);
+
+        //setPersons(result.data.records);
+
+        //props.update();
+
+
+
+
+
+    }
+    function update() {
+
+        sendData();
+        navigation.navigate('Login')
+    }
     return (
         <View style={styles.container}>
             <Image
@@ -22,23 +73,29 @@ function Reg({ navigation }) {
             />
             <TextInput
                 style={styles.textinput}
-                onChangeText={text => onChangeText()}
+                onChangeText={text => setEmail(text)}
                 placeholder='email or phone'
 
             />
             <TextInput
                 style={styles.textinput}
-                onChangeText={text => onChangeText()}
+                onChangeText={text => setName(text)}
+                placeholder='name'
+
+            />
+            <TextInput
+                style={styles.textinput}
+                onChangeText={text => setAcc(text)}
                 placeholder='acc'
 
             />
             <TextInput
                 style={styles.textinput}
-                onChangeText={text => onChangeText()}
+                onChangeText={text => setPass(text)}
                 placeholder='password'
 
             />
-            <TouchableOpacity onPress={() => navigation.navigate('Index')} style={styles.button}>
+            <TouchableOpacity onPress={update} style={styles.button}>
                 <Text style={{ color: 'white' }}>註冊</Text>
             </TouchableOpacity>
             <View style={{ flexDirection: 'row' }}>
@@ -50,9 +107,21 @@ function Reg({ navigation }) {
 
 
 }
-function onChangeText() {
-    alert('aa')
-}
+/*
+function testAPI() {
+    const axios_config = {
+        headers: { 'Authorization': 'Bearer keyUwcLvTO51TNEHV' }
+    };
+    const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
+    res()
+    async function res() {
+        const result = await axios.get(url, axios_config);
+        alert(result.data.records[0].id)
+    }
+
+
+}*/
+
 const styles = StyleSheet.create({
     logo: {
         width: '100%',
