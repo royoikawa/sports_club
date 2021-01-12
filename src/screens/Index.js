@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { Alert, Button,Dimensions, View, Text, StyleSheet, Image,TouchableOpacity, TouchableHighlight } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, Button, Dimensions,View,Text, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import {
     AntDesign,
     Ionicons,
