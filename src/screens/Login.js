@@ -15,13 +15,18 @@ import {
     SimpleLineIcons,
 } from '@expo/vector-icons';
 function Login({ navigation }) {
+
+    
     const [acc, setAcc] = useState("");
     const [pass, setPass] = useState("");
     const axios_config = {
         headers: { 'Authorization': 'Bearer keyUwcLvTO51TNEHV' }
     };
     const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
-    
+
+    function onPressToIndex(name) {
+      navigation.navigate("Index", { name});
+    }
     async function res() {
         const result = await axios.get(url, axios_config);
         //alert((result.data.records).length)
@@ -34,7 +39,10 @@ function Login({ navigation }) {
                 if(pass == result.data.records[i].fields.u_pass){
                     alert(acc)
                     alert(pass)
-                    navigation.navigate('Index')
+                    onPressToIndex(result.data.records[i].fields.u_name);
+
+                    
+                    //navigation.navigate('Index')
                 }
                 else{
                     alert('密碼錯誤')

@@ -20,7 +20,8 @@ import UserDetail from './UserDetail';
 export default class Index  extends React.Component {
 
     state = {
-    isModalVisible:false
+    isModalVisible:false,
+    accountName: this.props.route.params.name,
     }
 
     openModal = () =>{
@@ -81,7 +82,7 @@ export default class Index  extends React.Component {
                                         </Modal>
                                     </View>
                                 </View>
-                                <View><Text>用戶名稱</Text></View>
+                                <View><Text>{this.state.accountName}</Text></View>
                             </View>
                             <View style={styles.userData}>
                                 <View style={{ flexDirection: 'row', marginLeft: 15, marginBottom: 30 }}>
