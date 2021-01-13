@@ -25,7 +25,7 @@ import ReactStar from '../screens/ReactStar';
 
 import Modal_test from '../screens/Modal_test';
 
-
+import actList from '../screens/actList';
 
 // create stack type navigation
 import Reg from '../screens/Reg';
@@ -46,7 +46,7 @@ function MainNavigator() {
 
        <Stack.Screen name="Index" component={Index} />
 
-      
+       <Stack.Screen name="actList" component={actList} />
 
        
 

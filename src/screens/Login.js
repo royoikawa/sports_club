@@ -24,9 +24,9 @@ function Login({ navigation }) {
     };
     const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
 
-    function onPressToIndex(name) {
-      navigation.navigate("Index", { name});
-    }
+    function onPressToIndex(name,id) {
+        navigation.navigate("Index", { name,id});
+      }
     async function res() {
         const result = await axios.get(url, axios_config);
         //alert((result.data.records).length)
@@ -39,19 +39,22 @@ function Login({ navigation }) {
                 if(pass == result.data.records[i].fields.u_pass){
                     alert(acc)
                     alert(pass)
-                    onPressToIndex(result.data.records[i].fields.u_name);
+                    onPressToIndex(result.data.records[i].fields.u_name,result.data.records[i].fields.uid);
 
                     
                     //navigation.navigate('Index')
                 }
                 else{
-                    alert('密碼錯誤')
+                    flag = 2
                 }
                 
             }
         }
         if (flag==0){
             alert('無此帳號')
+        }
+        else if(flag==2){
+            alert("密碼錯誤")
         }
         alert(result.data.records[4].fields.uid)
     }
