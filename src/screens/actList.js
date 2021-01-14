@@ -21,6 +21,10 @@ function actList({ route, navigation }) {
     const [ball, setBall] = useState();
     const [note, setNote] = useState();
     const [place, setPlace] = useState();
+    const [numup, setNumup] = useState();
+    const [ballup, setBallup] = useState();
+    const [noteup, setNoteup] = useState();
+    const [placeup, setPlaceup] = useState();
     const [delN, setDelN] = useState();
     getData()
     function getData() {
@@ -89,16 +93,16 @@ function actList({ route, navigation }) {
             const result = await axios.get(url, axios_config);
             var len = (result.data.records).length
             for (var i = 0; i < len; i++) {
-                if (result.data.records[i].fields.aid == num) {
+                if (result.data.records[i].fields.aid == numup) {
                     var rid = result.data.records[i].id
                     const upurl = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/active/" + rid + "?api_key=keyUwcLvTO51TNEHV"
                     const updata =
 
                     {
                         "fields": {
-                            "Notes": note,
-                            "ball": ball,
-                            "place": place,
+                            "Notes": noteup,
+                            "ball": ballup,
+                            "place": placeup,
                         }
                     }
                     const result2 = await axios.patch(upurl, updata, axios_config);
@@ -176,25 +180,25 @@ function actList({ route, navigation }) {
                 }} onPress={add}><Text style={{ color: 'white' }}>新增</Text></TouchableOpacity>
                 <TextInput
                     style={styles.textinput}
-                    onChangeText={text => setNum(text)}
+                    onChangeText={text => setNumup(text)}
                     placeholder='num'
 
                 />
                 <TextInput
                     style={styles.textinput}
-                    onChangeText={text => setBall(text)}
+                    onChangeText={text => setBallup(text)}
                     placeholder='ball'
 
                 />
                 <TextInput
                     style={styles.textinput}
-                    onChangeText={text => setNote(text)}
+                    onChangeText={text => setNoteup(text)}
                     placeholder='note'
 
                 />
                 <TextInput
                     style={styles.textinput}
-                    onChangeText={text => setPlace(text)}
+                    onChangeText={text => setPlaceup(text)}
                     placeholder='place'
 
                 />
