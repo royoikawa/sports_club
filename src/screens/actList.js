@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Alert, Button, Dimensions, View, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity ,TextInput} from 'react-native';
+import { Alert, Button, Dimensions, View, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity, TextInput } from 'react-native';
 import {
     AntDesign,
     Ionicons,
@@ -21,6 +21,7 @@ function actList({ route, navigation }) {
     const [ball, setBall] = useState();
     const [note, setNote] = useState();
     const [place, setPlace] = useState();
+    const [delN, setDelN] = useState();
     getData()
     function getData() {
 
@@ -42,11 +43,69 @@ function actList({ route, navigation }) {
                     array.push(<Text>{result.data.records[i].fields.ball}</Text>)
                     array.push(<Text>{result.data.records[i].fields.Notes}</Text>)
                     array.push(<Text>{result.data.records[i].fields.place}</Text>)
-                    array.push(<TouchableOpacity style={{ backgroundColor: '#46A3FF', width: '20%' }}><Text style={{ color: 'white' }}>修改</Text></TouchableOpacity>)
+                    array.push(<Text>=============</Text>)
+
                 }
             }
             setData(array)
 
+        }
+
+
+    }
+    function del() {
+        const axios_config = {
+            headers: {
+                'Authorization': 'Bearer keyUwcLvTO51TNEHV',
+                'Content-Type': 'application/json'
+            }
+        };
+        const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/active/?api_key=keyUwcLvTO51TNEHV";
+        res()
+        async function res() {
+
+            const result = await axios.get(url, axios_config);
+            var len = (result.data.records).length
+            for (var i = 0; i < len; i++) {
+                if (result.data.records[i].fields.aid == delN) {
+                    var rid = result.data.records[i].id
+                    const url2 = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/active/" + rid + "?api_key=keyUwcLvTO51TNEHV"
+                    const result2 = await axios.delete(url2, axios_config);
+                }
+
+            }
+        }
+    }
+    function upd() {
+        const axios_config = {
+            headers: {
+                'Authorization': 'Bearer keyUwcLvTO51TNEHV',
+                'Content-Type': 'application/json'
+            }
+        };
+        const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/active/?api_key=keyUwcLvTO51TNEHV";
+        res()
+        async function res() {
+            const result = await axios.get(url, axios_config);
+            var len = (result.data.records).length
+            for (var i = 0; i < len; i++) {
+                if (result.data.records[i].fields.aid == num) {
+                    var rid = result.data.records[i].id
+                    const upurl = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/active/" + rid + "?api_key=keyUwcLvTO51TNEHV"
+                    const updata =
+
+                    {
+                        "fields": {
+                            "Notes": note,
+                            "ball": ball,
+                            "place": place,
+                        }
+                    }
+                    const result2 = await axios.patch(upurl, updata, axios_config);
+
+                }
+
+            }
         }
 
 
@@ -76,57 +135,96 @@ function actList({ route, navigation }) {
 
 
             const result = await axios.post(url, newAct, axios_config);
-        }}
-        return (
-            <View style={{ flexDirection: 'row' }}>
-                <View flex='1'>
-                    {data}
-                </View>
-                <View flex='1' style={{
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>
-                    <TextInput
-                        style={styles.textinput}
-                        onChangeText={text => setNum(text)}
-                        placeholder='num'
-
-                    />
-                    <TextInput
-                        style={styles.textinput}
-                        onChangeText={text => setBall(text)}
-                        placeholder='ball'
-
-                    />
-                    <TextInput
-                        style={styles.textinput}
-                        onChangeText={text => setNote(text)}
-                        placeholder='note'
-
-                    />
-                    <TextInput
-                        style={styles.textinput}
-                        onChangeText={text => setPlace(text)}
-                        placeholder='place'
-
-                    />
-                    <TouchableOpacity style={{
-                        alignItems: 'center',
-                        justifyContent: 'center', backgroundColor: '#46A3FF', width: '30%', height: '10%'
-                    }} onPress={add}><Text style={{ color: 'white' }}>新增</Text></TouchableOpacity>
-                </View>
+        }
+    }
+    return (
+        <View style={{ flexDirection: 'row' }}>
+            <View flex='1'>
+                {data}
             </View>
+            <View flex='1' style={{
+                alignItems: 'center',
+                justifyContent: 'center'
+            }}>
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setNum(text)}
+                    placeholder='num'
 
-        )
+                />
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setBall(text)}
+                    placeholder='ball'
+
+                />
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setNote(text)}
+                    placeholder='note'
+
+                />
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setPlace(text)}
+                    placeholder='place'
+
+                />
+                <TouchableOpacity style={{
+                    alignItems: 'center',
+                    justifyContent: 'center', backgroundColor: '#46A3FF', width: '30%', height: '10%'
+                }} onPress={add}><Text style={{ color: 'white' }}>新增</Text></TouchableOpacity>
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setNum(text)}
+                    placeholder='num'
+
+                />
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setBall(text)}
+                    placeholder='ball'
+
+                />
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setNote(text)}
+                    placeholder='note'
+
+                />
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setPlace(text)}
+                    placeholder='place'
+
+                />
+                <TouchableOpacity onPress={upd} style={{
+                    alignItems: 'center',
+                    justifyContent: 'center', backgroundColor: 'green', width: '30%', height: '10%'
+                }}><Text style={{ color: 'white' }}>修改</Text></TouchableOpacity>
+                <TextInput
+                    style={styles.textinput}
+                    onChangeText={text => setDelN(text)}
+                    placeholder='num'
+
+                />
+                <TouchableOpacity onPress={del} style={{
+                    alignItems: 'center',
+                    justifyContent: 'center', backgroundColor: 'red', width: '30%', height: '10%'
+                }}><Text style={{ color: 'white' }}>刪除</Text></TouchableOpacity>
+            </View>
+        </View>
+
+    )
+}
+
+
+const styles = StyleSheet.create({
+    list: {
+
     }
 
-
-    const styles = StyleSheet.create({
-        list: {
-
-        }
-
-    })
+})
 
 
 
