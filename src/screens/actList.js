@@ -143,10 +143,12 @@ function actList({ route, navigation }) {
     }
     return (
         <View style={{ flexDirection: 'row' }}>
-            <View flex='1'>
+            <View style={{ flex: 1 }} >
                 {data}
             </View>
-            <View flex='1' style={{
+            <View 
+             style={{
+                flex: 1 ,
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
