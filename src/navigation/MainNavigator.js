@@ -25,6 +25,9 @@ import ReactStar from '../screens/ReactStar';
 
 import Modal_test from '../screens/Modal_test';
 
+import actList from '../screens/actList';
+
+import create_room from "../screens/create_room";
 
 // create stack type navigation
 import Reg from '../screens/Reg';
@@ -36,66 +39,46 @@ function GoToButton({screenName}) {
 // The main page is signupfor_activity because it is on top of Stack.Screen
 function MainNavigator() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Create_room" component={create_room} />
 
-                <Stack.Screen name="Login"
-                    component={Login}/>
+          <Stack.Screen name="Login" component={Login} />
 
-                <Stack.Screen name='Location_detail'
-                    component={Location_detail}/>
+          <Stack.Screen name="Location_detail" component={Location_detail} />
 
-                <Stack.Screen name="Index"
-                    component={Index}/>
+          <Stack.Screen name="Index" component={Index} />
 
+          <Stack.Screen name="actList" component={actList} />
 
-                <Stack.Screen name='Rating'
-                    component={Rating}/>
+          <Stack.Screen name="Rating" component={Rating} />
 
+          <Stack.Screen name="Modal_test" component={Modal_test} />
 
-                <Stack.Screen name='Modal_test'
-                    component={Modal_test}/>
+          <Stack.Screen name="ReactStar" component={ReactStar} />
 
+          <Stack.Screen name="UserDetail" component={UserDetail} />
 
-                <Stack.Screen name='ReactStar'
-                    component={ReactStar}/>
+          <Stack.Screen name="Mapview" component={Mapview} />
 
+          <Stack.Screen name="EditingWindow" component={EditingWindow} />
 
-                <Stack.Screen name='UserDetail'
-                    component={UserDetail}/>
+          <Stack.Screen
+            name="signupfor_activity"
+            component={signupfor_activity}
+          />
 
+          <Stack.Screen name="Location_List" component={Location_List} />
 
-                <Stack.Screen name='Mapview'
-                    component={Mapview}/>
+          <Stack.Screen name="Overlay_test" component={Overlay_test} />
 
+          <Stack.Screen name="Overlay" component={Overlay} />
 
-                <Stack.Screen name='EditingWindow'
-                    component={EditingWindow}/>
+          <Stack.Screen name="Index1" component={Index1} />
 
-
-                <Stack.Screen name='signupfor_activity'
-                    component={signupfor_activity}/>
-
-                <Stack.Screen name='Location_List'
-                    component={Location_List}/>
-
-
-                <Stack.Screen name='Overlay_test'
-                    component={Overlay_test}/>
-
-
-                <Stack.Screen name='Overlay'
-                    component={Overlay}/>
-
-
-                <Stack.Screen name='Index1'
-                    component={Index1}/>
-
-
-                <Stack.Screen name="Reg"
-                    component={Reg}/>
-            </Stack.Navigator>
-        </NavigationContainer>
-    )
+          <Stack.Screen name="Reg" component={Reg} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 }
 export default MainNavigator

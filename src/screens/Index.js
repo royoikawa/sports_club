@@ -22,6 +22,7 @@ export default class Index  extends React.Component {
     state = {
     isModalVisible:false,
     accountName: this.props.route.params.name,
+    accountId: this.props.route.params.id,
     }
 
     openModal = () =>{
@@ -36,7 +37,7 @@ export default class Index  extends React.Component {
     })
     }
     render(){
-
+    const id = this.state.accountId
     return (
 
         <View style={styles.container}>
@@ -119,7 +120,8 @@ export default class Index  extends React.Component {
                             <View style={styles.butt}>
                                 <View style={styles.buttFrame2}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <FontAwesome name="list-alt" size={30} color="white" />
+                                        <FontAwesome name="list-alt" size={30} color="white" 
+                                        onPress={() =>  this.props.navigation.navigate('actList',{id})}/>
                                     </View>
                                 </View>
                                 <View><Text>臨打列表</Text></View>
