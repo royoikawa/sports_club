@@ -1,4 +1,7 @@
 import React, { Component, useState } from "react";
+
+import axios from "axios";
+
 import {
   Button,
   Dimensions,
@@ -7,6 +10,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Picker,
+  
 } from "react-native";
 
 import Constants from "expo-constants";
@@ -42,6 +46,9 @@ import {
 // set window width,height
 const { width, height } = Dimensions.get("window");
 
+
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+
 import { Overlay } from "react-native-elements";
 
 // You can import from local files
@@ -52,7 +59,8 @@ import { TextInput, TouchableHighlight } from "react-native-gesture-handler";
 
 import Overlay_test from "./Overlay_test";
 
-import Modal from "./Overlay_test";
+
+import Modal from "react-native-modal";
 
 var today = new Date();
 var date =
@@ -60,23 +68,42 @@ var date =
 
 export default class create_room extends React.Component {
   // set initial state in constructor
-  
-    
+
   constructor(props) {
     super(props);
 
     this.state = {
       TypeOfSport: "排球",
-      timehour : 0,
+      place:"台北",
+      setpmin:0,
+      setpmax:10,
+      timehour: 0,
       timeminute: 0,
+      isDatePickerVisible: false,
       isVisible: true,
+      date: date
     };
   }
 
-  choosedate()
-  {
-  console.log(date);
-  }
+  openModal = () => {
+    this.setState({
+      isModalVisible: true,
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      isModalVisible: false,
+    });
+  };
+
+  setDate = (dates) => {
+    this.setState({
+      date: dates,
+    });
+  };
+
+  
 
   funselectfilter() {}
 
@@ -87,7 +114,78 @@ export default class create_room extends React.Component {
   At line 292, r: The radius of the inner circle point.    
   */
   render = () => {
-    
+    var ballopt = 0;
+    var r_ball=this.state.TypeOfSport;
+    var r_pmin = this.state.setpmin;
+    var r_pmax = this.state.setpmax;
+    var r_place = this.state.place;
+     const axios_config = {
+       headers: {
+         'Authorization': "Bearer keyUwcLvTO51TNEHV",
+         'Content-Type': "application/json"
+       }
+     };
+     const url =
+       "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/room?api_key=keyYDUJ2A3aj7Z5M7";
+
+    async function PostroomData() {
+      /*
+      if (this.state.TypeOfSport.equals("排球"))
+      {
+         ballopt=1;
+      }
+      */
+
+      const newRoom = {
+        "fields": {
+          "rid": 1,
+          "r_ball": ballopt,
+          "r_pmin": parseInt(r_pmin),
+          "r_pmax": parseInt(r_pmax),
+          "r_place": r_place
+        }
+      }
+      alert(newRoom.fields.rid);
+      alert("enter");
+      //alert(newPerson.fields.uid);
+
+      const result = await axios.post(url, newRoom, axios_config);
+
+      alert(result.data.fields.uid);
+      //console.log(result);
+
+      //setPersons(result.data.records);
+
+      //props.update();
+    }
+
+    function Create_room()
+    {
+        PostroomData();
+        alert("ok")
+    }
+    const showDatePicker = () => {
+      this.setState({ isDatePickerVisible : true});
+    };
+
+    const hideDatePicker = () => {
+      this.setState({ isDatePickerVisible: false });
+    };
+
+    const handleConfirm = (date) => {
+      var changeddate =
+        date.getFullYear() +
+        "-" +
+        (date.getMonth() + 1) +
+        "-" +
+        date.getDate();
+      this.setState({date : changeddate})
+      console.warn("A date has been picked: ", date);
+      hideDatePicker();
+    };
+
+   
+
     return (
       <View style={styles.container}>
         <View style={styles.userdatatop} navigation={this.props.navigation}>
@@ -164,7 +262,11 @@ export default class create_room extends React.Component {
           >
             最少
           </Text>
-          <TextInput style={styles.textinput} placeholder="5"></TextInput>
+          <TextInput
+            style={styles.textinput}
+            placeholder="5"
+            onChangeText={(min) => this.setState({ setpmin: min })}
+          ></TextInput>
 
           <Text
             style={{
@@ -185,7 +287,11 @@ export default class create_room extends React.Component {
           >
             最多
           </Text>
-          <TextInput style={styles.textinput} placeholder="10"></TextInput>
+          <TextInput
+            style={styles.textinput}
+            placeholder="10"
+            onChangeText={(max) => this.setState({ setpmax: max })}
+          ></TextInput>
 
           <Text
             style={{
@@ -209,6 +315,7 @@ export default class create_room extends React.Component {
           <TextInput
             style={styles.addressinput}
             placeholder="台北市大安區"
+            onChangeText={(text) => this.setState({ place: text })}
           ></TextInput>
         </View>
 
@@ -224,14 +331,24 @@ export default class create_room extends React.Component {
           }}
         >
           <Text style={styles.inputitem}>時段</Text>
+
           <MaterialCommunityIcons
             name="calendar"
             size={31}
             color="red"
             style={{ paddingLeft: width * 0.1 }}
-            onPress={() => this.choosedate()}
-          />
-          <Text style={styles.inputitem}>2020/09/30</Text>
+            onPress={showDatePicker}
+          >
+            <DateTimePickerModal
+              isVisible={this.state.isDatePickerVisible}
+              mode="date"
+              date={this.today}
+              onConfirm={handleConfirm}
+              onCancel={hideDatePicker}
+            />
+          </MaterialCommunityIcons>
+
+          <Text style={styles.inputitem}>{this.state.date}</Text>
         </View>
 
         <View
@@ -254,8 +371,12 @@ export default class create_room extends React.Component {
                 this.setState({ timehour: ball });
               }}
             >
-              <Picker.Item label="00" value="java" />
-              <Picker.Item label="01" value="js" />
+              <Picker.Item label="06" value="java" />
+              <Picker.Item label="08" value="js" />
+              <Picker.Item label="10" value="js" />
+              <Picker.Item label="12" value="java" />
+              <Picker.Item label="14" value="js" />
+              <Picker.Item label="16" value="js" />
             </Picker>
           </View>
 
@@ -308,8 +429,12 @@ export default class create_room extends React.Component {
                 this.setState({ timehour: ball });
               }}
             >
-              <Picker.Item label="00" value="java" />
-              <Picker.Item label="01" value="js" />
+              <Picker.Item label="07" value="java" />
+              <Picker.Item label="09" value="js" />
+              <Picker.Item label="11" value="js" />
+              <Picker.Item label="12" value="java" />
+              <Picker.Item label="15" value="js" />
+              <Picker.Item label="17" value="js" />
             </Picker>
           </View>
 
@@ -415,6 +540,7 @@ export default class create_room extends React.Component {
               marginLeft: width * 0.27,
               backgroundColor: "white",
             }}
+            onPress={Create_room}
           >
             <Text style={{ fontSize: 16, color: "black", fontWeight: "bold" }}>
               創建
