@@ -54,16 +54,28 @@ import Overlay_test from "./Overlay_test";
 
 import Modal from "./Overlay_test";
 
+var today = new Date();
+var date =
+  today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
 export default class create_room extends React.Component {
   // set initial state in constructor
-
+  
+    
   constructor(props) {
     super(props);
 
     this.state = {
       TypeOfSport: "排球",
+      timehour : 0,
+      timeminute: 0,
       isVisible: true,
     };
+  }
+
+  choosedate()
+  {
+  console.log(date);
   }
 
   funselectfilter() {}
@@ -75,6 +87,7 @@ export default class create_room extends React.Component {
   At line 292, r: The radius of the inner circle point.    
   */
   render = () => {
+    
     return (
       <View style={styles.container}>
         <View style={styles.userdatatop} navigation={this.props.navigation}>
@@ -116,17 +129,19 @@ export default class create_room extends React.Component {
             <Text
               style={{
                 paddingLeft: width * 0.2,
+                fontSize: 17,
               }}
             >
               邀請
             </Text>
             <Ionicons
               name="md-person-add"
-              size={24}
+              size={30}
               color="blue"
               style={{
-                paddingLeft: width * 0.02,
+                paddingLeft: width * 0.03,
               }}
+              onPress={() => alert("invite")}
             />
           </View>
         </View>
@@ -190,224 +205,221 @@ export default class create_room extends React.Component {
             height: height * 0.11,
           }}
         >
-          <Text
-            style={{
-              paddingLeft: width * 0.05,
-              fontSize: 17,
-              fontWeight: "bold",
-            }}
-          >
-            地點
-          </Text>
+          <Text style={styles.inputitem}>地點</Text>
           <TextInput
             style={styles.addressinput}
             placeholder="台北市大安區"
           ></TextInput>
         </View>
 
-        <View>
-          <View style={{ flexDirection: "row" }}>
-            <View>
-              <Ionicons
-                name="md-person"
-                size={55}
-                color="black"
-                style={styles.person}
-              />
-            </View>
-            <View>
-              <View style={styles.bottominfor}>
-                <Text
-                  style={{
-                    color: "#000000",
-                    fontWeight: "bold",
-                    fontSize: 18,
-                  }}
-                >
-                  最擅長球類:
-                </Text>
-                <Text
-                  style={{
-                    color: "#930000",
-                    fontWeight: "bold",
-                    paddingLeft: width * 0.04,
-                    fontSize: 18,
-                  }}
-                >
-                  排球
-                </Text>
-              </View>
-
-              <View style={styles.bottomscore}>
-                <Text
-                  style={{
-                    color: "#000000",
-                    fontWeight: "bold",
-                    fontSize: 18,
-                  }}
-                >
-                  程度:
-                </Text>
-                <Text
-                  style={{
-                    color: "#000000",
-                    fontWeight: "bold",
-                    paddingLeft: width * 0.2,
-                    fontSize: 18,
-                  }}
-                >
-                  88
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View>
-            <View style={{ flexDirection: "row", marginTop: height * 0.035 }}>
-              <Text
-                style={{
-                  color: "#000000",
-                  fontWeight: "bold",
-                  fontSize: 18,
-                  paddingLeft: width * 0.15,
-                }}
-              >
-                球品評價:
-              </Text>
-              <AntDesign
-                name="star"
-                size={24}
-                color="#F9F900"
-                style={{ paddingLeft: width * 0.035 }}
-              />
-              <AntDesign
-                name="star"
-                size={24}
-                color="#F9F900"
-                style={{ paddingLeft: width * 0.008 }}
-              />
-              <AntDesign
-                name="star"
-                size={24}
-                color="#F9F900"
-                style={{ paddingLeft: width * 0.008 }}
-              />
-              <AntDesign
-                name="star"
-                size={24}
-                color="#F9F900"
-                style={{ paddingLeft: width * 0.008 }}
-              />
-              <AntDesign
-                name="star"
-                size={24}
-                color="gray"
-                style={{ paddingLeft: width * 0.008 }}
-              />
-            </View>
-          </View>
-
-          <View>
-            <View style={{ flexDirection: "row", marginTop: height * 0.035 }}>
-              <Text
-                style={{
-                  color: "#000000",
-                  fontWeight: "bold",
-                  fontSize: 18,
-                  paddingLeft: width * 0.15,
-                }}
-              >
-                各項球類詳細數據
-              </Text>
-
-              <Picker
-                selectedValue={this.state.TypeOfSport}
-                style={{
-                  height: height * 0.035,
-                  width: width * 0.27,
-                  marginLeft: width * 0.05,
-                }}
-                onValueChange={(ball) => {
-                  this.setState({ TypeOfSport: ball });
-                }}
-              >
-                <Picker.Item label="排球" value="java" />
-                <Picker.Item label="其他" value="js" />
-              </Picker>
-            </View>
-          </View>
-
-          <View>
-            <View style={{ flexDirection: "row", marginTop: height * 0.03 }}>
-              <Card style={styles.cardsty}>
-                <Text style={{ color: "#000000", fontSize: 16 }}>
-                  綜合程度:88
-                </Text>
-              </Card>
-            </View>
-          </View>
+        <View
+          style={{
+            backgroundColor: "#84C1FF",
+            flexDirection: "row",
+            alignItems: "baseline",
+            borderLeftWidth: 1,
+            borderRightWidth: 1,
+            width: width * 0.92,
+            height: height * 0.07,
+          }}
+        >
+          <Text style={styles.inputitem}>時段</Text>
+          <MaterialCommunityIcons
+            name="calendar"
+            size={31}
+            color="red"
+            style={{ paddingLeft: width * 0.1 }}
+            onPress={() => this.choosedate()}
+          />
+          <Text style={styles.inputitem}>2020/09/30</Text>
         </View>
 
         <View
           style={{
-            width: width * 0.92,
-            borderBottomLeftRadius: 2,
-            borderBottomRightRadius: 2,
-            borderBottomWidth: 1,
+            backgroundColor: "#84C1FF",
+            flexDirection: "row",
+            paddingLeft: width * 0.25,
+            alignItems: "baseline",
             borderLeftWidth: 1,
-            borderRightWidth: 1.5,
+            borderRightWidth: 1,
+            width: width * 0.92,
+            height: height * 0.06,
           }}
         >
-          <LineChart
-            data={{
-              labels: [
-                "接發",
-                "扣球",
-                "舉球",
-                "發球\t",
-                "修舉\t",
-                "修攻",
-                "接扣",
-              ],
-              datasets: [
-                {
-                  data: [
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                  ],
-                },
-              ],
-            }}
-            width={width * 0.91666} // from react-native
-            height={height * 0.33}
-            yAxisSuffix=""
-            yAxisInterval={1} // optional, defaults to 1
-            chartConfig={{
-              backgroundColor: "#84C1FF",
-              backgroundGradientFrom: "#84C1FF",
-              backgroundGradientTo: "#84C1FF",
-              decimalPlaces: 2, // optional, defaults to 2dp
-              color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-              labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-              style: {
-                borderRadius: 16,
-              },
-              propsForDots: {
-                r: "6",
-                strokeWidth: "2.5",
-                stroke: "#ffa726",
-              },
-            }}
-            bezier
+          <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
+            <Picker
+              selectedValue={this.state.timehour}
+              style={styles.pickertime}
+              onValueChange={(ball) => {
+                this.setState({ timehour: ball });
+              }}
+            >
+              <Picker.Item label="00" value="java" />
+              <Picker.Item label="01" value="js" />
+            </Picker>
+          </View>
+
+          <Text
             style={{
-              marginVertical: 0.001,
+              fontWeight: "bold",
+              fontSize: 20,
+              paddingLeft: width * 0.015,
+              paddingRight: width * 0.015,
             }}
-          />
+          >
+            :
+          </Text>
+
+          <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
+            <Picker
+              selectedValue={this.state.timeminute}
+              style={styles.pickertime}
+              onValueChange={(ball) => {
+                this.setState({ timeminute: ball });
+              }}
+            >
+              <Picker.Item label="00" value="java" />
+              <Picker.Item label="01" value="js" />
+            </Picker>
+          </View>
+
+          <Text style={{ fontWeight: "bold", paddingLeft: width * 0.015 }}>
+            到
+          </Text>
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "#84C1FF",
+            flexDirection: "row",
+            paddingLeft: width * 0.25,
+            alignItems: "baseline",
+            borderLeftWidth: 1,
+            borderRightWidth: 1,
+            width: width * 0.92,
+            height: height * 0.07,
+          }}
+        >
+          <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
+            <Picker
+              selectedValue={this.state.timehour}
+              style={styles.pickertime}
+              onValueChange={(ball) => {
+                this.setState({ timehour: ball });
+              }}
+            >
+              <Picker.Item label="00" value="java" />
+              <Picker.Item label="01" value="js" />
+            </Picker>
+          </View>
+
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 20,
+              paddingLeft: width * 0.015,
+              paddingRight: width * 0.015,
+            }}
+          >
+            :
+          </Text>
+
+          <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
+            <Picker
+              selectedValue={this.state.timeminute}
+              style={styles.pickertime}
+              onValueChange={(ball) => {
+                this.setState({ timeminute: ball });
+              }}
+            >
+              <Picker.Item label="00" value="java" />
+              <Picker.Item label="01" value="js" />
+            </Picker>
+          </View>
+        </View>
+
+        <View style={styles.create_room_infor}>
+          <Text style={styles.inputitem}>程度</Text>
+          <Text
+            style={{
+              paddingLeft: width * 0.1,
+              fontSize: 15,
+            }}
+          >
+            評分數值
+          </Text>
+        </View>
+
+        <View
+          style={{
+            backgroundColor: "#84C1FF",
+            flexDirection: "row",
+            paddingLeft: width * 0.25,
+            alignItems: "baseline",
+            borderLeftWidth: 1,
+            borderRightWidth: 1,
+            width: width * 0.92,
+            height: height * 0.07,
+          }}
+        >
+          <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
+            <Picker
+              selectedValue={this.state.timehour}
+              style={styles.pickertime}
+              onValueChange={(ball) => {
+                this.setState({ timehour: ball });
+              }}
+            >
+              <Picker.Item label="0" value="bad" />
+              <Picker.Item label="9" value="good" />
+            </Picker>
+          </View>
+
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: 20,
+              paddingLeft: width * 0.015,
+              paddingRight: width * 0.015,
+            }}
+          >
+            ~
+          </Text>
+
+          <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
+            <Picker
+              selectedValue={this.state.timeminute}
+              style={styles.pickertime}
+              onValueChange={(ball) => {
+                this.setState({ timeminute: ball });
+              }}
+            >
+              <Picker.Item label="1" value="badlimit" />
+              <Picker.Item label="10" value="goodlimit" />
+            </Picker>
+          </View>
+        </View>
+
+        <View style={styles.create_button}>
+          <TouchableHighlight
+            underlayColor="rgb(210, 230, 255)"
+            activeOpacity={0.5}
+            style={{
+              borderRadius: 8,
+              borderWidth: 1.5,
+              paddingLeft: width * 0.07,
+              paddingTop: height * 0.015,
+              width: width * 0.25,
+              height: height * 0.07,
+              marginTop: height * 0.02,
+              marginLeft: width * 0.27,
+              backgroundColor: "white",
+            }}
+          >
+            <Text style={{ fontSize: 16, color: "black", fontWeight: "bold" }}>
+              創建
+            </Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -454,7 +466,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "baseline",
     width: width * 0.92,
-    height: height * 0.07,
+    height: height * 0.05,
+    backgroundColor: "#84C1FF",
+
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+  },
+  create_button: {
+    flexDirection: "row",
+    alignItems: "baseline",
+    width: width * 0.92,
+    height: height * 0.13,
     backgroundColor: "#84C1FF",
 
     borderLeftWidth: 1,
@@ -481,6 +503,15 @@ const styles = StyleSheet.create({
     width: "75%",
     borderRadius: 1,
     marginBottom: 20,
+  },
+  inputitem: {
+    paddingLeft: width * 0.05,
+    fontSize: 17,
+    fontWeight: "bold",
+  },
+  pickertime: {
+    height: height * 0.035,
+    width: width * 0.23,
   },
   person: {
     marginTop: height * 0.06,
