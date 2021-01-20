@@ -36,6 +36,7 @@ export default class Index  extends React.Component {
     isModalVisible:false
     })
     }
+    
     render(){
     const id = this.state.accountId
     return (
