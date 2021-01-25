@@ -110,7 +110,7 @@ export default class Index  extends React.Component {
                                 <View style={styles.buttFrame1}>
                                     <View style={{ justifyContent: 'center', alignItems: 'center', }}>
                                         <SimpleLineIcons name="magnifier-add" size={30} color="white" 
-                                            onPress={() => this.props.navigation.navigate('Index')}
+                                            onPress={() => this.props.navigation.navigate('create_room')}
                                         />
                                     </View>
                                 </View>

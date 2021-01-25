@@ -15,7 +15,7 @@ import {
     SimpleLineIcons,
 } from '@expo/vector-icons';
 function actList({ route, navigation }) {
-    const id = route.params.id
+    const id = route.params.id;
     const [data, setData] = useState([<Text>a</Text>]);
     const [num, setNum] = useState();
     const [ball, setBall] = useState();

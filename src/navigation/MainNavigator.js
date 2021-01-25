@@ -29,6 +29,12 @@ import actList from '../screens/actList';
 
 import create_room from "../screens/create_room";
 
+import Retrofit_get from "../screens/Retrofit_get";
+
+import APIRetrofittest from "../screens/APIRetrofittest";
+
+import UserInfo from '../screens/UserInfo';
+
 // create stack type navigation
 import Reg from '../screens/Reg';
 const Stack = createStackNavigator()
@@ -41,15 +47,20 @@ function MainNavigator() {
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Create_room" component={create_room} />
-
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="UserInfo" component={UserInfo} />
+
+          <Stack.Screen name="actList" component={actList} />
+
+          <Stack.Screen name="Retrofit_get" component={Retrofit_get} />
+
+          <Stack.Screen name="APIRetrofittest" component={APIRetrofittest} />
+
+          <Stack.Screen name="create_room" component={create_room} />
 
           <Stack.Screen name="Location_detail" component={Location_detail} />
 
           <Stack.Screen name="Index" component={Index} />
-
-          <Stack.Screen name="actList" component={actList} />
 
           <Stack.Screen name="Rating" component={Rating} />
 

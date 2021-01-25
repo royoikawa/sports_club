@@ -123,7 +123,7 @@ export default  class  UserDetail extends React.Component {
        
          
       </View>
-Ftouc
+
       
       <View style={styles.userdatabottom}>
         <View>
