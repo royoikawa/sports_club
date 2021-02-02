@@ -145,6 +145,7 @@ export default class create_room extends React.Component {
           "r_place": r_place
         }
       }
+      
       alert(newRoom.fields.rid);
       alert("enter");
       //alert(newPerson.fields.uid);

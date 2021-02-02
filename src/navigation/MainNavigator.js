@@ -35,6 +35,14 @@ import APIRetrofittest from "../screens/APIRetrofittest";
 
 import UserInfo from '../screens/UserInfo';
 
+import volleyreview from "../screens/volleyreview";
+
+import basketreview from "../screens/basketreview";
+
+import badmintonreview from "../screens/badmintonreview";
+
+import  TableTennisReview from  "../screens/TableTennisReview";
+
 // create stack type navigation
 import Reg from '../screens/Reg';
 const Stack = createStackNavigator()
@@ -48,6 +56,18 @@ function MainNavigator() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} />
+          
+          <Stack.Screen
+            name="TableTennisReview"
+            component={TableTennisReview}
+          />
+
+          <Stack.Screen name="volleyreview" component={volleyreview} />
+
+          <Stack.Screen name="basketreview" component={basketreview} />
+
+          <Stack.Screen name="badmintonreview" component={badmintonreview} />
+
           <Stack.Screen name="UserInfo" component={UserInfo} />
 
           <Stack.Screen name="actList" component={actList} />

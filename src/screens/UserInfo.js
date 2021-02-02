@@ -42,12 +42,15 @@ function UserInfo({ route,navigation }) {
       const [numup, setNumup] = useState(77);
 
       var reguid = route.params.uid;
-      console.log(reguid);
+      var userName=route.params.uname;
+      //console.log(reguid);
 
     const [isSelectedTable, setTable] = useState(false);
     const [isSelectedVolley, setVolley] = useState(false);
     const [isSelectedBasket, setBasket] = useState(false);
     const [isSelectedBad, setBad] = useState(false);
+
+    var userid;
 
     function upd() {
      
@@ -84,6 +87,9 @@ function UserInfo({ route,navigation }) {
             }
             const result2 =  await axios.patch(upurl, updata, axios_config);
              console.log(result.data.records[i]);
+             userid = result.data.records[i].fields.uid;
+             navigation.navigate("volleyreview", { userid });
+           
           }
         }
       }
@@ -91,7 +97,7 @@ function UserInfo({ route,navigation }) {
     function Postuserinfo()
     {
         upd();
-        navigation.navigate("Login");
+        
     }
 
 
@@ -117,7 +123,7 @@ function UserInfo({ route,navigation }) {
           <View style={styles.username}>
             <Text style={styles.userinfor}>用戶名</Text>
             <View style={{ borderBottomWidth: 1.5, width: width * 0.5 }}>
-              <Text style={{ paddingLeft: width * 0.02 }}>AK47</Text>
+              <Text style={{ paddingLeft: width * 0.03 }}>{userName}</Text>
             </View>
           </View>
           <View style={styles.username}>
@@ -191,9 +197,7 @@ function UserInfo({ route,navigation }) {
               marginTop: height * 0.05,
             }}
           >
-            <TouchableOpacity
-              onPress={() => Postuserinfo()}
-            >
+            <TouchableOpacity onPress={() => Postuserinfo()}>
               <View style={styles.button}>
                 <Text style={{ paddingTop: height * 0.02, color: "white" }}>
                   填寫球類自我評分

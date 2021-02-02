@@ -1,4 +1,3 @@
-
 import React, { Component, useState } from "react";
 import {
   Button,
@@ -10,7 +9,6 @@ import {
   TouchableOpacity,
   Picker,
 } from "react-native";
-
 
 import {
   AntDesign,
@@ -35,22 +33,17 @@ export default class Retrofit_get extends React.Component {
     text: null,
     r_pmax: 0,
     loading: false,
-    error: null
+    error: null,
   };
 
-   changestate()
-      {
-     
-      }
+  changestate() {}
 
   render = () => {
-
     function search() {
       GetData();
     }
-      
-  
-    const Pmax=this.state.r_pmax;
+
+    const Pmax = this.state.r_pmax;
     async function GetData() {
       const res = await axios
         .get(
@@ -73,8 +66,6 @@ export default class Retrofit_get extends React.Component {
         .catch(function (error) {
           console.log(error);
         });
-        
-        
     }
 
     return (
@@ -104,7 +95,7 @@ export default class Retrofit_get extends React.Component {
             placeholder="Enter text to search an image"
             returnKeyType="search"
             autoFocus={true}
-            onChangeText={(text) => this.setState({ text : text })}
+            onChangeText={(text) => this.setState({ text: text })}
             onSubmitEditing={() => search()}
           />
         </View>
@@ -113,22 +104,20 @@ export default class Retrofit_get extends React.Component {
   };
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
+    justifyContent: "center",
+    backgroundColor: "#ecf0f1",
   },
   blueline: {
     width: width,
     height: height * 0.058,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    textAlign: 'center',
-    backgroundColor: '#46A3FF',
-    paddingLeft: width *0.07,
-  }
-
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    textAlign: "center",
+    backgroundColor: "#46A3FF",
+    paddingLeft: width * 0.07,
+  },
 });

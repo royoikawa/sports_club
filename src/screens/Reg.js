@@ -25,7 +25,7 @@ function Reg({ navigation }) {
             'Content-Type': 'application/json'
         }
     };
-    var userid,uid;
+    var userid,uid,uname;
     const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
     async function sendData() {
 
@@ -60,8 +60,10 @@ function Reg({ navigation }) {
         userid = result.data.id;
         uid = result.data.fields.uid;
 
+        uname = result.data.fields.u_name;
+
         console.log(uid);
-        navigation.navigate("UserInfo", { userid, uid });
+        navigation.navigate("UserInfo", { userid, uid,uname });
     }
     function update() {
 

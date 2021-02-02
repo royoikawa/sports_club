@@ -56,7 +56,7 @@ function Login({ navigation }) {
         else if(flag==2){
             alert("密碼錯誤")
         }
-        alert(result.data.records[4].fields.uid)
+       
     }
     function Login(){
         res()
