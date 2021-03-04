@@ -43,6 +43,8 @@ import badmintonreview from "../screens/badmintonreview";
 
 import  TableTennisReview from  "../screens/TableTennisReview";
 
+import  Room_List from "../screens/Room_List";
+
 // create stack type navigation
 import Reg from '../screens/Reg';
 const Stack = createStackNavigator()
@@ -57,6 +59,8 @@ function MainNavigator() {
         <Stack.Navigator>
           <Stack.Screen name="Login" component={Login} />
           
+          <Stack.Screen name="Room_List" component={Room_List} />
+
           <Stack.Screen
             name="TableTennisReview"
             component={TableTennisReview}

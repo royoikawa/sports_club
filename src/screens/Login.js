@@ -24,8 +24,8 @@ function Login({ navigation }) {
     };
     const url = "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/User?api_key=keyUwcLvTO51TNEHV";
 
-    function onPressToIndex(name,id) {
-        navigation.navigate("Index", { name,id});
+    function onPressToIndex(name,uid,id) {
+        navigation.navigate("Index", { name,uid,id});
       }
     async function res() {
         const result = await axios.get(url, axios_config);
@@ -39,7 +39,7 @@ function Login({ navigation }) {
                 if(pass == result.data.records[i].fields.u_pass){
                     alert(acc)
                     alert(pass)
-                    onPressToIndex(result.data.records[i].fields.u_name,result.data.records[i].fields.uid);
+                    onPressToIndex(result.data.records[i].fields.u_name,result.data.records[i].fields.uid,result.data.records[i].id);
 
                     
                     //navigation.navigate('Index')

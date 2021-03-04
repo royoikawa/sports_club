@@ -22,8 +22,12 @@ export default class Index  extends React.Component {
     state = {
     isModalVisible:false,
     accountName: this.props.route.params.name,
-    accountId: this.props.route.params.id,
+    accountId: this.props.route.params.uid,
+    bestone : 'not',
+    bestscore : 80
     }
+
+    
 
     openModal = () =>{
         this.setState({
@@ -36,151 +40,293 @@ export default class Index  extends React.Component {
     isModalVisible:false
     })
     }
+
+    
     
     render(){
-    const id = this.state.accountId
+    const id = this.state.accountId;
+
+    const name= this.state.accountName;
+
+        const axios_config = {
+        headers: { Authorization: "Bearer keyUwcLvTO51TNEHV" },
+        };
+
+    const url =
+      "https://api.airtable.com/v0/appJtWi1JYXIRK8zi/volley/"+ this.state.identifyid+ "?api_key=keyUwcLvTO51TNEHV";
+        
+       
+       
     return (
-
-        <View style={styles.container}>
-            <View style={styles.indexTop}>
-                <View style={{ flex: 1 }}>
-                </View>
-                <View style={{ flex: 14, flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', }}>
-                    <Text style={{ marginRight: 4, fontWeight: 'bold', color: '#0072E3', fontSize: 14 }}>編輯個人檔案</Text>
-                    <Foundation name="clipboard-pencil" style={styles.topIcon} />
-                </View>
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <Entypo name="log-out" style={styles.topIcon} />
-                </View>
-                <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <AntDesign name="notification" style={styles.topIcon} />
-                </View>
-                <View style={{ flex: 1 }}>
-                </View>
-            </View>
-            <View style={styles.index}>
-                <View style={styles.indexLogo}>
-
-
-                    <Image
-                        style={styles.tinyLogo}
-                        source={require('../../Image/logo2.png')}
-
-                    />
-
-                </View>
-                <View style={styles.indexCard}>
-                    <View style={{ flex: 1 }}></View>
-                    <View style={styles.card}>
-                        <View style={styles.userDetail}>
-                            <View style={styles.user}>
-                                <View style={styles.headPic}>
-                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <AntDesign name="user" size={42} color="black" onPress={() => this.openModal() } />
-                                        <Modal animationIn="slideInUp" animationOut="slideOutDown"    onBackdropPress={()=>this.closeModal()} isVisible={this.state.isModalVisible} onRequestClose={() => console.log('onRequestClose...')}  style={{backgroundColor:'white',maxHeight:Dimensions.get('window').height / 2,marginTop: Dimensions.get('window').height / 4.5}}>
-                                            
-                                            
-                                            <UserDetail />
-                                        </Modal>
-                                    </View>
-                                </View>
-                                <View><Text>{this.state.accountName}</Text></View>
-                            </View>
-                            <View style={styles.userData}>
-                                <View style={{ flexDirection: 'row', marginLeft: 15, marginBottom: 30 }}>
-                                    <Text style={{ marginRight: 20, fontWeight: 'bold', fontSize: 16 }}>最擅長球類</Text>
-                                    <Text style={{ color: '#F75000', fontWeight: 'bold', fontSize: 16, }}>桌球</Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', marginLeft: 15 }}>
-                                    <Text style={{ marginRight: 20, fontWeight: 'bold', fontSize: 16 }}>技術評等</Text>
-                                    <Text style={{ color: '#F75000', fontWeight: 'bold', fontSize: 16, }}>98</Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.starScore}>
-                            <Text></Text>
-                        </View>
-                    </View>
-                    <View style={{ flex: 1 }}></View>
-                </View>
-                <View style={styles.indexButton}>
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={styles.iconButt1}>
-                            <View style={styles.butt}>
-                                <View style={styles.buttFrame1}>
-                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <SimpleLineIcons name="magnifier-add" size={30} color="white" 
-                                            onPress={() => this.props.navigation.navigate('create_room')}
-                                        />
-                                    </View>
-                                </View>
-                                <View><Text>尋找球友</Text></View>
-                            </View>
-                        </View>
-                        <View style={styles.iconButt1}>
-                            <View style={styles.butt}>
-                                <View style={styles.buttFrame2}>
-                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <FontAwesome name="list-alt" size={30} color="white" 
-                                        onPress={() =>  this.props.navigation.navigate('actList',{id})}/>
-                                    </View>
-                                </View>
-                                <View><Text>臨打列表</Text></View>
-                            </View>
-                        </View>
-                        <View style={styles.iconButt1}>
-                            <View style={styles.butt}>
-                                <View style={styles.buttFrame3}>
-                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <Feather name="map-pin" size={30} color="white" 
-                                            onPress={() => this.props.navigation.navigate('Location_List')}
-                                        />
-                                    </View>
-                                </View>
-                                <View><Text>場館資訊</Text></View>
-                            </View>
-                        </View>
-
-                    </View>
-                    <View style={{ flex: 1, flexDirection: 'row' }}>
-                        <View style={styles.iconButt}>
-                            <View style={styles.butt}>
-                                <View style={styles.buttFrame4}>
-                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <FontAwesome5 name="clipboard-list" size={30} color="white"
-                                        onPress={() => this.props.navigation.navigate('signupfor_activity')}
-                                         />
-                                    </View>
-                                </View>
-                                <View><Text>已加活動</Text></View>
-                            </View>
-                        </View>
-                        <View style={styles.iconButt}>
-                            <View style={styles.butt}>
-                                <View style={styles.buttFrame5}>
-                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-                                        <Feather name="check-circle" size={30} color="white" />
-                                    </View>
-                                </View>
-                                <View><Text>評分數值</Text></View>
-                            </View>
-                        </View>
-                        <View style={styles.iconButt}>
-                            <View style={styles.butt}>
-                                <View style={styles.buttFrame6}>
-                                    <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-
-                                        <MaterialIcons name="people-outline" size={30}  color="white" />
-                                    </View>
-                                </View>
-                                <View><Text>好友頁面</Text></View>
-                            </View>
-                        </View>
-                    </View>
-                </View>
-            </View>
+      <View style={styles.container}>
+        <View style={styles.indexTop}>
+          <View style={{ flex: 1 }}></View>
+          <View
+            style={{
+              flex: 14,
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                marginRight: 4,
+                fontWeight: "bold",
+                color: "#0072E3",
+                fontSize: 14,
+              }}
+            >
+              編輯個人檔案
+            </Text>
+            <Foundation name="clipboard-pencil" style={styles.topIcon} />
+          </View>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Entypo name="log-out" style={styles.topIcon} />
+          </View>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <AntDesign name="notification" style={styles.topIcon} />
+          </View>
+          <View style={{ flex: 1 }}></View>
         </View>
-    )
+        <View style={styles.index}>
+          <View style={styles.indexLogo}>
+            <Image
+              style={styles.tinyLogo}
+              source={require("../../Image/logo2.png")}
+            />
+          </View>
+          <View style={styles.indexCard}>
+            <View style={{ flex: 1 }}></View>
+            <View style={styles.card}>
+              <View style={styles.userDetail}>
+                <View style={styles.user}>
+                  <View style={styles.headPic}>
+                    <View
+                      style={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <AntDesign
+                        name="user"
+                        size={42}
+                        color="black"
+                        onPress={() => this.openModal()}
+                      />
+                      <Modal
+                        animationIn="slideInUp"
+                        animationOut="slideOutDown"
+                        onBackdropPress={() => this.closeModal()}
+                        isVisible={this.state.isModalVisible}
+                        onRequestClose={() => console.log("onRequestClose...")}
+                        style={{
+                          backgroundColor: "white",
+                          maxHeight: Dimensions.get("window").height / 2,
+                          marginTop: Dimensions.get("window").height / 4.5,
+                        }}
+                      >
+                        <UserDetail />
+                      </Modal>
+                    </View>
+                  </View>
+                  <View>
+                    <Text>{this.state.accountName}</Text>
+                  </View>
+                </View>
+                <View style={styles.userData}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      marginLeft: 15,
+                      marginBottom: 30,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        marginRight: 20,
+                        fontWeight: "bold",
+                        fontSize: 16,
+                      }}
+                    >
+                      最擅長球類
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#F75000",
+                        fontWeight: "bold",
+                        fontSize: 16,
+                      }}
+                    >
+                      {this.state.bestone}
+                    </Text>
+                  </View>
+                  <View style={{ flexDirection: "row", marginLeft: 15 }}>
+                    <Text
+                      style={{
+                        marginRight: 20,
+                        fontWeight: "bold",
+                        fontSize: 16,
+                      }}
+                    >
+                      技術評等
+                    </Text>
+                    <Text
+                      style={{
+                        color: "#F75000",
+                        fontWeight: "bold",
+                        fontSize: 16,
+                      }}
+                    >
+                      {this.state.bestscore}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.starScore}>
+                <Text></Text>
+              </View>
+            </View>
+            <View style={{ flex: 1 }}></View>
+          </View>
+          <View style={styles.indexButton}>
+            <View style={{ flex: 1, flexDirection: "row" }}>
+              <View style={styles.iconButt1}>
+                <View style={styles.butt}>
+                  <View style={styles.buttFrame1}>
+                    <View
+                      style={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <SimpleLineIcons
+                        name="magnifier-add"
+                        size={30}
+                        color="white"
+                        onPress={() =>
+                          this.props.navigation.navigate("create_room", {
+                            name
+                          })
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View>
+                    <Text>尋找球友</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.iconButt1}>
+                <View style={styles.butt}>
+                  <View style={styles.buttFrame2}>
+                    <View
+                      style={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <FontAwesome
+                        name="list-alt"
+                        size={30}
+                        color="white"
+                        onPress={() =>
+                          this.props.navigation.navigate("actList", { id })
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View>
+                    <Text>臨打列表</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.iconButt1}>
+                <View style={styles.butt}>
+                  <View style={styles.buttFrame3}>
+                    <View
+                      style={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <Feather
+                        name="map-pin"
+                        size={30}
+                        color="white"
+                        onPress={() =>
+                          this.props.navigation.navigate("Location_List")
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View>
+                    <Text>場館資訊</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View style={{ flex: 1, flexDirection: "row" }}>
+              <View style={styles.iconButt}>
+                <View style={styles.butt}>
+                  <View style={styles.buttFrame4}>
+                    <View
+                      style={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <FontAwesome5
+                        name="clipboard-list"
+                        size={30}
+                        color="white"
+                        onPress={() =>
+                          this.props.navigation.navigate("signupfor_activity")
+                        }
+                      />
+                    </View>
+                  </View>
+                  <View>
+                    <Text>已加活動</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.iconButt}>
+                <View style={styles.butt}>
+                  <View style={styles.buttFrame5}>
+                    <View
+                      style={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <Feather name="check-circle" size={30} color="white" />
+                    </View>
+                  </View>
+                  <View>
+                    <Text>評分數值</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.iconButt}>
+                <View style={styles.butt}>
+                  <View style={styles.buttFrame6}>
+                    <View
+                      style={{ justifyContent: "center", alignItems: "center" }}
+                    >
+                      <MaterialIcons
+                        name="people-outline"
+                        size={30}
+                        color="white"
+                      />
+                    </View>
+                  </View>
+                  <View>
+                    <Text>好友頁面</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
 
     }
 

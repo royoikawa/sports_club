@@ -69,19 +69,25 @@ var date =
 export default class create_room extends React.Component {
   // set initial state in constructor
 
+ 
+
   constructor(props) {
     super(props);
 
     this.state = {
       TypeOfSport: "排球",
-      place:"台北",
-      setpmin:0,
-      setpmax:10,
-      timehour: 0,
-      timeminute: 0,
+      place: "台北",
+      setpmin: 0,
+      setpmax: 10,
+      timehourbegin: 0,
+      timehourend: 0,
+      timeminutebegin: 0,
+      timeminuteend: 0,
+      lowest_sco: 0,
+      highest_sco: 9,
       isDatePickerVisible: false,
       isVisible: true,
-      date: date
+      date: date,
     };
   }
 
@@ -114,6 +120,7 @@ export default class create_room extends React.Component {
   At line 292, r: The radius of the inner circle point.    
   */
   render = () => {
+    var u_name = this.props.route.params.name;
     var ballopt = 0;
     var r_ball=this.state.TypeOfSport;
     var r_pmin = this.state.setpmin;
@@ -139,6 +146,7 @@ export default class create_room extends React.Component {
       const newRoom = {
         "fields": {
           "rid": 1,
+          "r_user": u_name,
           "r_ball": ballopt,
           "r_pmin": parseInt(r_pmin),
           "r_pmax": parseInt(r_pmax),
@@ -366,10 +374,10 @@ export default class create_room extends React.Component {
         >
           <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
             <Picker
-              selectedValue={this.state.timehour}
+              selectedValue={this.state.timehourbegin}
               style={styles.pickertime}
               onValueChange={(ball) => {
-                this.setState({ timehour: ball });
+                this.setState({ timehourbegin: ball });
               }}
             >
               <Picker.Item label="06" value="java" />
@@ -394,10 +402,10 @@ export default class create_room extends React.Component {
 
           <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
             <Picker
-              selectedValue={this.state.timeminute}
+              selectedValue={this.state.timeminutebegin}
               style={styles.pickertime}
               onValueChange={(ball) => {
-                this.setState({ timeminute: ball });
+                this.setState({ timeminutebegin: ball });
               }}
             >
               <Picker.Item label="00" value="java" />
@@ -424,10 +432,10 @@ export default class create_room extends React.Component {
         >
           <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
             <Picker
-              selectedValue={this.state.timehour}
+              selectedValue={this.state.timehourend}
               style={styles.pickertime}
               onValueChange={(ball) => {
-                this.setState({ timehour: ball });
+                this.setState({ timehourend: ball });
               }}
             >
               <Picker.Item label="07" value="java" />
@@ -452,10 +460,10 @@ export default class create_room extends React.Component {
 
           <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
             <Picker
-              selectedValue={this.state.timeminute}
+              selectedValue={this.state.timeminuteend}
               style={styles.pickertime}
               onValueChange={(ball) => {
-                this.setState({ timeminute: ball });
+                this.setState({ timeminuteend: ball });
               }}
             >
               <Picker.Item label="00" value="java" />
@@ -490,10 +498,10 @@ export default class create_room extends React.Component {
         >
           <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
             <Picker
-              selectedValue={this.state.timehour}
+              selectedValue={this.state.lowest_sco}
               style={styles.pickertime}
               onValueChange={(ball) => {
-                this.setState({ timehour: ball });
+                this.setState({ lowest_sco: ball });
               }}
             >
               <Picker.Item label="0" value="bad" />
@@ -514,10 +522,10 @@ export default class create_room extends React.Component {
 
           <View style={{ backgroundColor: "white", borderWidth: 1.5 }}>
             <Picker
-              selectedValue={this.state.timeminute}
+              selectedValue={this.state.highest_sco}
               style={styles.pickertime}
               onValueChange={(ball) => {
-                this.setState({ timeminute: ball });
+                this.setState({ highest_sco: ball });
               }}
             >
               <Picker.Item label="1" value="badlimit" />
